@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Schreibtraining – Prüfungsvorbereitung</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>✍️ Schreibtraining</h1>
+    <p class="subtitle">Übe Schreibaufgaben zur Prüfungsvorbereitung und erhalte sofort eine ausführliche Rückmeldung.</p>
+  </header>
+
+  <main class="app-main">
+
+    <!-- Schritt 1: Angaben zur Person -->
+    <section id="step-intro" class="card">
+      <h2>1. Kurz zu dir</h2>
+      <label for="input-name">Name</label>
+      <input type="text" id="input-name" placeholder="Dein Name" autocomplete="off" />
+
+      <label for="input-kurs">Kurs / Gruppe</label>
+      <select id="input-kurs"></select>
+
+      <button id="btn-start" class="btn-primary">Weiter zur Aufgabenauswahl</button>
+    </section>
+
+    <!-- Schritt 2: Aufgabenauswahl -->
+    <section id="step-select" class="card hidden">
+      <h2>2. Aufgabe wählen</h2>
+      <label for="select-format">Prüfungsformat</label>
+      <select id="select-format"></select>
+
+      <label for="select-task">Aufgabe</label>
+      <select id="select-task"></select>
+
+      <div id="task-details" class="task-details"></div>
+
+      <button id="btn-to-write" class="btn-primary">Aufgabe bearbeiten</button>
+    </section>
+
+    <!-- Schritt 3: Schreiben -->
+    <section id="step-write" class="card hidden">
+      <h2>3. Text schreiben</h2>
+      <div id="write-task-summary" class="task-details"></div>
+
+      <label for="input-text">Dein Text</label>
+      <textarea id="input-text" rows="14" placeholder="Schreib hier deinen Text..."></textarea>
+      <div class="word-count">
+        <span id="word-count-display">0 Wörter</span>
+        <span id="autosave-hint" class="autosave-hint"></span>
+      </div>
+
+      <div class="button-row">
+        <button id="btn-back-select" class="btn-secondary">Zurück</button>
+        <button id="btn-submit" class="btn-primary">Text abgeben &amp; bewerten lassen</button>
+      </div>
+    </section>
+
+    <!-- Ladeanzeige -->
+    <section id="step-loading" class="card hidden">
+      <h2>Deine Bewertung wird erstellt…</h2>
+      <div class="spinner"></div>
+      <p>Das kann ein paar Sekunden dauern.</p>
+    </section>
+
+    <!-- Schritt 4: Feedback -->
+    <section id="step-feedback" class="card hidden">
+      <h2>4. Deine Rückmeldung</h2>
+      <div id="feedback-content"></div>
+
+      <div class="button-row">
+        <button id="btn-new-task" class="btn-primary">Weitere Aufgabe üben</button>
+      </div>
+    </section>
+
+    <!-- Fehleranzeige -->
+    <section id="step-error" class="card hidden">
+      <h2>⚠️ Es gab ein Problem</h2>
+      <p id="error-message"></p>
+      <button id="btn-retry" class="btn-secondary">Erneut versuchen</button>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <p>Dein Text und die Bewertung werden zur Nachbereitung an deine Lehrkraft übermittelt.</p>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="tasks.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

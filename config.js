@@ -1,0 +1,41 @@
+/* ============================================================
+   config.js
+   HIER TRÄGST DU DEINE PERSÖNLICHEN EINSTELLUNGEN EIN.
+   Diese Datei ist die einzige, die du nach der Einrichtung des
+   Cloudflare Workers und des Google-Formulars anpassen musst.
+   Eine ausführliche Anleitung dazu steht in README.md.
+   ============================================================ */
+
+const CONFIG = {
+  // 1) Die URL deines Cloudflare Workers (Schritt "Worker deployen" in README.md)
+  //    Beispiel: "https://schreibtraining-bewertung.deinname.workers.dev"
+  WORKER_URL: "https://DEINE-WORKER-URL.workers.dev",
+
+  // 2) Ein selbst gewähltes, langes Zufalls-Passwort. Muss EXAKT mit dem
+  //    APP_SECRET übereinstimmen, das du als Umgebungsvariable im
+  //    Cloudflare Worker hinterlegst. Schützt den Worker vor fremder
+  //    Nutzung (kein vollständiger Schutz, aber verhindert zufälligen Missbrauch).
+  APP_SECRET: "bitte-hier-ein-eigenes-langes-passwort-eintragen",
+
+  // 3) Die "Formular-Antworten senden"-URL deines Google Formulars.
+  //    Findest du z. B., indem du dir im Formular-Editor unter den drei
+  //    Punkten "Vorschau" öffnest und dort die URL kopierst, dann am Ende
+  //    "viewform" durch "formResponse" ersetzt.
+  //    Beispiel: "https://docs.google.com/forms/d/e/1FAIpQLSc.../formResponse"
+  GOOGLE_FORM_ACTION_URL: "https://docs.google.com/forms/d/e/DEINE-FORM-ID/formResponse",
+
+  // 4) Die entry.XXXXXXXXX-IDs der einzelnen Formularfelder.
+  //    Anleitung zum Herausfinden dieser IDs steht in README.md.
+  GOOGLE_FORM_ENTRY_IDS: {
+    name: "entry.111111111",
+    kurs: "entry.222222222",
+    aufgabe: "entry.333333333",
+    text: "entry.444444444",
+    gesamteinschaetzung: "entry.555555555",
+    bewertungDetails: "entry.666666666"
+  },
+
+  // 5) Auswahlliste der Kurse/Gruppen, die im Dropdown der App erscheinen.
+  //    Einfach anpassen/erweitern.
+  KURSE: ["BSK-B1+", "BSK-B2", "B1.1 Oberndorf", "Sonstige"]
+};
