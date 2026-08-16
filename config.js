@@ -9,8 +9,7 @@
 const CONFIG = {
   // 1) Die URL deines Cloudflare Workers (Schritt "Worker deployen" in README.md)
   //    Beispiel: "https://schreibtraining-bewertung.deinname.workers.dev"
-  WORKER_URL: "schreibtraining-bewertung.jurtzik.workers.dev",
-
+  WORKER_URL: "https://schreibtraining-bewertung.jurtzik.workers.dev",
   // 2) Ein selbst gewähltes, langes Zufalls-Passwort. Muss EXAKT mit dem
   //    APP_SECRET übereinstimmen, das du als Umgebungsvariable im
   //    Cloudflare Worker hinterlegst. Schützt den Worker vor fremder
