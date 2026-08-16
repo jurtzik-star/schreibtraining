@@ -9,13 +9,13 @@
 const CONFIG = {
   // 1) Die URL deines Cloudflare Workers (Schritt "Worker deployen" in README.md)
   //    Beispiel: "https://schreibtraining-bewertung.deinname.workers.dev"
-  WORKER_URL: "https://DEINE-WORKER-URL.workers.dev",
+  WORKER_URL: "https://github.com/jurtzik-star/schreibtraining",
 
   // 2) Ein selbst gewähltes, langes Zufalls-Passwort. Muss EXAKT mit dem
   //    APP_SECRET übereinstimmen, das du als Umgebungsvariable im
   //    Cloudflare Worker hinterlegst. Schützt den Worker vor fremder
   //    Nutzung (kein vollständiger Schutz, aber verhindert zufälligen Missbrauch).
-  APP_SECRET: "bitte-hier-ein-eigenes-langes-passwort-eintragen",
+  APP_SECRET: "Z3SKGkgo2qkvCbqQTg06D86RcKlrCB174vyn4BRgdbo",
 
   // 3) Die "Formular-Antworten senden"-URL deines Google Formulars.
   //    Findest du z. B., indem du dir im Formular-Editor unter den drei
