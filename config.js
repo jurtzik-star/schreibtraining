@@ -22,17 +22,17 @@ const CONFIG = {
   //    Punkten "Vorschau" öffnest und dort die URL kopierst, dann am Ende
   //    "viewform" durch "formResponse" ersetzt.
   //    Beispiel: "https://docs.google.com/forms/d/e/1FAIpQLSc.../formResponse"
-  GOOGLE_FORM_ACTION_URL: "https://docs.google.com/forms/d/e/DEINE-FORM-ID/formResponse",
+  GOOGLE_FORM_ACTION_URL: "https://docs.google.com/forms/d/e/1FAIpQLScNGNkLz1d6RChcahFZMxhBfU5jLNGMXmL-uHkl6HUgmCVOJw/formResponse",
 
   // 4) Die entry.XXXXXXXXX-IDs der einzelnen Formularfelder.
   //    Anleitung zum Herausfinden dieser IDs steht in README.md.
   GOOGLE_FORM_ENTRY_IDS: {
-    name: "entry.111111111",
-    kurs: "entry.222222222",
-    aufgabe: "entry.333333333",
-    text: "entry.444444444",
-    gesamteinschaetzung: "entry.555555555",
-    bewertungDetails: "entry.666666666"
+    name: "entry.1602534441",
+    kurs: "entry.524476248",
+    aufgabe: "entry.602638220",
+    text: "entry.1524497925",
+    gesamteinschaetzung: "entry.2090252352",
+    bewertungDetails: "entry.1275389670"
   },
 
   // 5) Auswahlliste der Kurse/Gruppen, die im Dropdown der App erscheinen.
