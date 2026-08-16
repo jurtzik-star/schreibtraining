@@ -36,5 +36,5 @@ const CONFIG = {
 
   // 5) Auswahlliste der Kurse/Gruppen, die im Dropdown der App erscheinen.
   //    Einfach anpassen/erweitern.
-  KURSE: ["BSK-B1+", "BSK-B2", "B1.1 Oberndorf", "Sonstige"]
+  KURSE: ["B1 Oberndorf (KL T. Jurtzik)", "BSK-B1+ Rottweil (KL T. Jurtzik)", "BSK-B2 Rottweil (KL H. Aminah"]
 };
