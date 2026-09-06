@@ -135,6 +135,57 @@ const TASKS = [
     maxWords: 150,
     hinweis: "Achten Sie auf eine höfliche, formelle Sprache."
   },
+  {
+    id: "b1-dtz-005",
+    format: "DTZ_B1",
+    formatLabel: "DTZ B1 – Schreiben",
+    title: "Drei Dinge, die ich erledigen sollte",
+    situation:
+      "Sie haben in letzter Zeit einiges liegen lassen: Dinge, die Sie eigentlich tun sollten, müssten oder könnten - die Sie aber (noch) nicht tun wollen oder können. Wählen Sie EINE der beiden Möglichkeiten: Schreiben Sie einen Ich-Text darüber ODER schreiben Sie eine informelle Nachricht an eine gute Freundin / einen guten Freund.",
+    punkte: [
+      "Nennen Sie drei Dinge, die Sie tun sollten, müssten oder könnten.",
+      "Erklären Sie zu jedem Punkt kurz, warum Sie es (noch) nicht getan haben.",
+      "Bei der Nachricht an eine Freundin/einen Freund: Bitten Sie höflich um Hilfe oder einen Rat bei mindestens einem der Punkte.",
+      "Beim Ich-Text: Beschreiben Sie, wie Sie sich dabei fühlen und was Sie sich vornehmen."
+    ],
+    minWords: 80,
+    maxWords: 150,
+    hinweis: "Nutzen Sie Modalverben wie sollen, müssen, können, wollen, um Pflicht, Möglichkeit und Wunsch zu unterscheiden."
+  },
+  {
+    id: "b1-dtz-006",
+    format: "DTZ_B1",
+    formatLabel: "DTZ B1 – Schreiben",
+    title: "Rat einholen: Auslandssemester",
+    situation:
+      "Sie überlegen, ein Austauschsemester im Ausland zu machen, sind sich aber noch unsicher. Schreiben Sie eine informelle Nachricht an eine gute Freundin / einen guten Freund, die/der bereits im Ausland studiert hat.",
+    punkte: [
+      "Erklären Sie, warum Sie über ein Auslandssemester nachdenken.",
+      "Fragen Sie, was die Person an Ihrer Stelle tun würde.",
+      "Bitten Sie höflich um konkrete Tipps zur Vorbereitung (z. B. Bewerbung, Sprache, Finanzierung).",
+      "Fragen Sie, ob sich ein Telefonat oder Treffen einrichten ließe, um mehr zu erfahren."
+    ],
+    minWords: 80,
+    maxWords: 150,
+    hinweis: "Nutzen Sie höfliche Formulierungen mit Konjunktiv II (könntest du, würdest du, hättest du Zeit) beim Bitten und Fragen."
+  },
+  {
+    id: "b1-dtz-007",
+    format: "DTZ_B1",
+    formatLabel: "DTZ B1 – Schreiben",
+    title: "Eine schwierige Situation in der WG",
+    situation:
+      "Sie wohnen in einer Wohngemeinschaft (WG). Eine Mitbewohnerin / ein Mitbewohner feiert regelmäßig laute Partys bis spät in die Nacht, wodurch Sie schlecht schlafen können. Schreiben Sie eine freundliche, aber klare Nachricht an diese Person.",
+    punkte: [
+      "Beschreiben Sie die Situation und wie sie Sie beeinträchtigt.",
+      "Erklären Sie höflich, warum Ihnen das Thema wichtig ist, ohne die Person zu verletzen.",
+      "Machen Sie einen konkreten, konstruktiven Vorschlag für die Zukunft (z. B. feste Uhrzeit, Vorwarnung).",
+      "Betonen Sie, dass Ihnen ein gutes Verhältnis zueinander wichtig ist."
+    ],
+    minWords: 80,
+    maxWords: 150,
+    hinweis: "Achten Sie auf einen freundlichen, aber bestimmten Ton – höfliche Formulierungen statt direkter Vorwürfe."
+  },
 
   // ---------------- telc B2 Beruf ----------------
   {
