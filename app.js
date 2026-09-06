@@ -177,7 +177,10 @@
   }
 
   // ---------- Event Listener ----------
-  el.btnStart.addEventListener("click", () => {
+  // Ausgelagert, damit sowohl der "Los geht's"-Button als auch ein
+  // Deep-Link mit bekanntem Namen (?name=...) automatisch denselben
+  // Ablauf anstoßen können, ohne dass extra geklickt werden muss.
+  function startFlow() {
     state.name = el.inputName.value.trim();
     state.kurs = el.inputKurs.value;
     if (!state.name) {
@@ -202,7 +205,9 @@
       }
       showStep(el.stepSelect);
     }
-  });
+  }
+
+  el.btnStart.addEventListener("click", startFlow);
 
   el.selectFormat.addEventListener("change", populateTaskOptions);
   el.selectTask.addEventListener("change", renderTaskDetails);
@@ -358,4 +363,12 @@
 
   // ---------- Start ----------
   initIntro();
+
+  // Kommt man mit einem Namen per Deep-Link an (z. B. aus der B1-Lern-App,
+  // wo der Name schon eingegeben wurde), muss nicht extra auf "Los geht's"
+  // geklickt werden - es geht direkt weiter (bei bekannter Aufgabe sogar
+  // direkt zum Schreiben, sonst zur Aufgabenauswahl).
+  if (deepLink.name) {
+    startFlow();
+  }
 })();
