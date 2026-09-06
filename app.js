@@ -12,6 +12,16 @@
   const LS_KEY_PREFIX = "schreibtraining_draft_";
   const LS_KEY_PROFILE = "schreibtraining_profile";
 
+  // Deep-Linking: erlaubt anderen Apps (z. B. der B1-Lern-App), per Link
+  // direkt auf eine bestimmte Aufgabe zu verweisen und den Namen mitzugeben,
+  // z. B. schreibtraining.jurtzik-lernapps.de/?name=Anna+Muster&taskId=b1-dtz-005
+  const urlParams = new URLSearchParams(window.location.search);
+  const deepLink = {
+    name: urlParams.get("name") || "",
+    kurs: urlParams.get("kurs") || "",
+    taskId: urlParams.get("taskId") || ""
+  };
+
   const state = {
     name: "",
     kurs: "",
@@ -77,6 +87,13 @@
       el.inputKurs.appendChild(opt);
     });
     if (saved.kurs) el.inputKurs.value = saved.kurs;
+
+    // Werte aus einem Deep-Link (z. B. von der B1-Lern-App) haben Vorrang
+    // vor gespeicherten Werten, da sie den aktuellsten Stand widerspiegeln.
+    if (deepLink.name) el.inputName.value = deepLink.name;
+    if (deepLink.kurs && (CONFIG.KURSE || []).includes(deepLink.kurs)) {
+      el.inputKurs.value = deepLink.kurs;
+    }
   }
 
   function initFormatOptions() {
@@ -140,6 +157,25 @@
     return localStorage.getItem(draftKey(taskId)) || "";
   }
 
+  // ---------- Direkt zu einer Aufgabe springen (Auswahl -> Schreiben) ----------
+  // Ausgelagert, damit sowohl der "Aufgabe bearbeiten"-Button als auch ein
+  // Deep-Link (?taskId=...) denselben Weg nutzen können.
+  function goToWrite(task) {
+    if (!task) return;
+    state.format = task.format;
+    state.task = task;
+
+    el.writeTaskSummary.innerHTML = `
+      <h3>${escapeHtml(task.title)}</h3>
+      <p>${escapeHtml(task.situation)}</p>
+      <ul>${task.punkte.map((p) => `<li>${escapeHtml(p)}</li>`).join("")}</ul>
+      <p><em>Empfohlener Umfang: ca. ${task.minWords}–${task.maxWords} Wörter. ${escapeHtml(task.hinweis || "")}</em></p>
+    `;
+    el.inputText.value = loadDraft(task.id);
+    updateWordCount();
+    showStep(el.stepWrite);
+  }
+
   // ---------- Event Listener ----------
   el.btnStart.addEventListener("click", () => {
     state.name = el.inputName.value.trim();
@@ -150,7 +186,22 @@
     }
     localStorage.setItem(LS_KEY_PROFILE, JSON.stringify({ name: state.name, kurs: state.kurs }));
     initFormatOptions();
-    showStep(el.stepSelect);
+
+    // Deep-Link mit bekannter Aufgabe: Auswahlschritt überspringen und
+    // direkt mit dem Schreiben beginnen.
+    const linkedTask = deepLink.taskId ? TASKS.find((t) => t.id === deepLink.taskId) : null;
+    if (linkedTask) {
+      el.selectFormat.value = linkedTask.format;
+      populateTaskOptions();
+      el.selectTask.value = linkedTask.id;
+      renderTaskDetails();
+      goToWrite(linkedTask);
+    } else {
+      if (deepLink.taskId) {
+        console.warn(`Deep-Link: Aufgabe "${deepLink.taskId}" wurde nicht gefunden.`);
+      }
+      showStep(el.stepSelect);
+    }
   });
 
   el.selectFormat.addEventListener("change", populateTaskOptions);
@@ -158,14 +209,7 @@
 
   el.btnToWrite.addEventListener("click", () => {
     const task = TASKS.find((t) => t.id === el.selectTask.value);
-    if (!task) return;
-    state.format = task.format;
-    state.task = task;
-
-    el.writeTaskSummary.innerHTML = el.taskDetails.innerHTML;
-    el.inputText.value = loadDraft(task.id);
-    updateWordCount();
-    showStep(el.stepWrite);
+    goToWrite(task);
   });
 
   el.btnBackSelect.addEventListener("click", () => showStep(el.stepSelect));
