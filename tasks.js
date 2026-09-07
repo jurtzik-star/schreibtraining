@@ -186,6 +186,23 @@ const TASKS = [
     maxWords: 150,
     hinweis: "Achten Sie auf einen freundlichen, aber bestimmten Ton – höfliche Formulierungen statt direkter Vorwürfe."
   },
+  {
+    id: "bskb1p-dtz-001",
+    format: "DTZ_B1",
+    formatLabel: "DTZ B1 – Schreiben",
+    title: "E-Mail an die Beratungsstelle: Anerkennung meines Abschlusses",
+    situation:
+      "Sie haben im Ausland eine Berufsausbildung abgeschlossen und möchten wissen, ob und wie dieser Abschluss in Deutschland anerkannt werden kann. Schreiben Sie eine E-Mail an die zuständige Beratungsstelle.",
+    punkte: [
+      "Stellen Sie sich kurz vor und nennen Sie Ihren Beruf bzw. Abschluss.",
+      "Erklären Sie, warum Ihnen die Anerkennung wichtig ist.",
+      "Fragen Sie, welche Unterlagen Sie einreichen müssen.",
+      "Bitten Sie um einen Termin für ein Beratungsgespräch."
+    ],
+    minWords: 80,
+    maxWords: 150,
+    hinweis: "Formeller Ton, mit passender Anrede (z. B. Sehr geehrte Damen und Herren) und Grußformel."
+  },
 
   // ---------------- telc B2 Beruf ----------------
   {
