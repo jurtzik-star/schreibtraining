@@ -289,11 +289,11 @@
     let html = "";
 
     html += `<div class="feedback-block gesamt"><h3>Gesamteinschätzung</h3><p>${escapeHtml(
-      feedback.gesamteinschaetzung || ""
+      feedback.gesamteinschätzung || ""
     )}</p></div>`;
 
-    if (Array.isArray(feedback.staerken) && feedback.staerken.length) {
-      html += `<div class="feedback-block"><h3>💪 Das ist dir schon gut gelungen</h3><ul>${feedback.staerken
+    if (Array.isArray(feedback.stärken) && feedback.stärken.length) {
+      html += `<div class="feedback-block"><h3>💪 Das ist dir schon gut gelungen</h3><ul>${feedback.stärken
         .map((s) => `<li>${escapeHtml(s)}</li>`)
         .join("")}</ul></div>`;
     }
@@ -311,7 +311,7 @@
         if (!kf) return;
         html += `<div class="kriterium">
           <span class="kriterium-label">${escapeHtml(k.label)}</span>
-          <span class="kriterium-einschaetzung">${escapeHtml(kf.einschaetzung || "")}</span>
+          <span class="kriterium-einschaetzung">${escapeHtml(kf.einschätzung || "")}</span>
           <p>${escapeHtml(kf.kommentar || "")}</p>
         </div>`;
       });
@@ -334,7 +334,7 @@
     const ids = CONFIG.GOOGLE_FORM_ENTRY_IDS;
     const bewertungDetails = JSON.stringify(
       {
-        staerken: feedback.staerken,
+        stärken: feedback.stärken,
         verbesserungstipps: feedback.verbesserungstipps,
         kriterien: feedback.kriterien,
         wortanzahl_hinweis: feedback.wortanzahl_hinweis
@@ -348,7 +348,7 @@
     formData.append(ids.kurs, state.kurs);
     formData.append(ids.aufgabe, `[${state.task.formatLabel}] ${state.task.title}`);
     formData.append(ids.text, text);
-    formData.append(ids.gesamteinschaetzung, feedback.gesamteinschaetzung || "");
+    formData.append(ids.gesamteinschaetzung, feedback.gesamteinschätzung || "");
     formData.append(ids.bewertungDetails, bewertungDetails);
 
     // Kurse mit eigenem, separatem Formular (siehe config.js) bekommen ihre

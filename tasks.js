@@ -14,7 +14,7 @@ const RUBRICS = {
     niveauziel: "B1",
     kriterien: [
       {
-        key: "aufgabenbewaeltigung",
+        key: "aufgabenbewältigung",
         label: "Aufgabenbewältigung",
         beschreibung:
           "Wurden alle vorgegebenen Punkte inhaltlich passend und ausreichend ausführlich behandelt?"
@@ -38,13 +38,13 @@ const RUBRICS = {
     niveauziel: "B2",
     kriterien: [
       {
-        key: "aufgabenerfuellung",
+        key: "aufgabenerfüllung",
         label: "Inhaltliche Angemessenheit / Aufgabenerfüllung",
         beschreibung:
           "Wurden alle Leitpunkte behandelt, inhaltlich stimmig und mit angemessener Ausführlichkeit (ca. 200 Wörter)?"
       },
       {
-        key: "koharenz_register",
+        key: "kohärenz_register",
         label: "Kohärenz und Register",
         beschreibung:
           "Logischer, gut verknüpfter Textaufbau (Konnektoren), passendes Register für einen formellen beruflichen Text, angemessene Anrede/Gruß."
