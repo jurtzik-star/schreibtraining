@@ -351,9 +351,16 @@
     formData.append(ids.gesamteinschaetzung, feedback.gesamteinschaetzung || "");
     formData.append(ids.bewertungDetails, bewertungDetails);
 
+    // Kurse mit eigenem, separatem Formular (siehe config.js) bekommen ihre
+    // Einsendungen dorthin; alle anderen Kurse nutzen weiterhin das
+    // geteilte Formular als Fallback.
+    const actionUrl =
+      (CONFIG.GOOGLE_FORM_ACTION_URL_BY_KURS && CONFIG.GOOGLE_FORM_ACTION_URL_BY_KURS[state.kurs]) ||
+      CONFIG.GOOGLE_FORM_ACTION_URL;
+
     // no-cors: wir bekommen keine lesbare Antwort, aber die Übermittlung
     // an Google Forms funktioniert damit zuverlässig cross-origin.
-    await fetch(CONFIG.GOOGLE_FORM_ACTION_URL, {
+    await fetch(actionUrl, {
       method: "POST",
       mode: "no-cors",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },

@@ -21,9 +21,26 @@ const CONFIG = {
   //    Punkten "Vorschau" öffnest und dort die URL kopierst, dann am Ende
   //    "viewform" durch "formResponse" ersetzt.
   //    Beispiel: "https://docs.google.com/forms/d/e/1FAIpQLSc.../formResponse"
+  //    Dies ist das allgemeine/geteilte Formular - wird als Fallback für
+  //    alle Kurse verwendet, die (noch) kein eigenes Formular haben (siehe
+  //    GOOGLE_FORM_ACTION_URL_BY_KURS unten).
   GOOGLE_FORM_ACTION_URL: "https://docs.google.com/forms/d/e/1FAIpQLScNGNkLz1d6RChcahFZMxhBfU5jLNGMXmL-uHkl6HUgmCVOJw/formResponse",
 
-  // 4) Die entry.XXXXXXXXX-IDs der einzelnen Formularfelder.
+  // 3b) Optional: pro Kurs ein eigenes, separates Formular hinterlegen
+  //     (gleiche Feldstruktur/entry-IDs wie beim geteilten Formular, einfach
+  //     als Kopie angelegt), damit Einsendungen dieses Kurses nicht mit
+  //     denen der anderen Kurse vermischt ankommen. Kurse ohne Eintrag hier
+  //     nutzen weiterhin GOOGLE_FORM_ACTION_URL oben.
+  GOOGLE_FORM_ACTION_URL_BY_KURS: {
+    "B1 Oberndorf (KL T. Jurtzik)": "https://docs.google.com/forms/d/e/1FAIpQLSeZq5Y98yN4_Fox8PQi-pAeggpUSZPovs6fPE6XoWYfFOCKDg/formResponse",
+    "BSK-B1+ Rottweil (KL T. Jurtzik)": "https://docs.google.com/forms/d/e/1FAIpQLScAVM9XdRx_u812s5Sdhrge9hZpiiqYBJnEqEnCBQPahij5AA/formResponse",
+    "BSK-B2 Rottweil (KL H. Aminah)": "https://docs.google.com/forms/d/e/1FAIpQLScmt8HojgOodDXYP6e05cnDk8FgDk_XdgpAGhbd8i_YguRknQ/formResponse"
+  },
+
+  // 4) Die entry.XXXXXXXXX-IDs der einzelnen Formularfelder. Gelten für das
+  //    geteilte Formular UND für die kursspezifischen Formulare oben, da
+  //    diese als Kopie des geteilten Formulars angelegt wurden und Google
+  //    Forms die entry-IDs beim Duplizieren beibehält.
   //    Anleitung zum Herausfinden dieser IDs steht in README.md.
   GOOGLE_FORM_ENTRY_IDS: {
     name: "entry.1602534441",
