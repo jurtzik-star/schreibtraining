@@ -325,6 +325,38 @@
     el.feedbackContent.innerHTML = html;
   }
 
+  // ---------- Bewertungsdetails als lesbaren Klartext aufbereiten ----------
+  // (statt rohem JSON.stringify, damit im Google-Sheet keine geschweiften/
+  // eckigen Klammern, Anführungszeichen und Kommas als Formatierungs-"Müll"
+  // erscheinen - stattdessen ein normal lesbarer Text mit Zeilenumbrüchen)
+  function formatBewertungDetails(feedback, rubric) {
+    const lines = [];
+    if (Array.isArray(feedback.stärken) && feedback.stärken.length) {
+      lines.push("Stärken:");
+      feedback.stärken.forEach((s) => lines.push(`- ${s}`));
+      lines.push("");
+    }
+    if (Array.isArray(feedback.verbesserungstipps) && feedback.verbesserungstipps.length) {
+      lines.push("Verbesserungstipps:");
+      feedback.verbesserungstipps.forEach((s) => lines.push(`- ${s}`));
+      lines.push("");
+    }
+    if (feedback.kriterien && rubric) {
+      lines.push("Bewertung nach Kriterien:");
+      rubric.kriterien.forEach((k) => {
+        const kf = feedback.kriterien[k.key];
+        if (!kf) return;
+        lines.push(`${k.label}: ${kf.einschätzung || ""}`);
+        if (kf.kommentar) lines.push(`  ${kf.kommentar}`);
+      });
+      lines.push("");
+    }
+    if (feedback.wortanzahl_hinweis) {
+      lines.push(`Wortanzahl-Hinweis: ${feedback.wortanzahl_hinweis}`);
+    }
+    return lines.join("\n").trim();
+  }
+
   // ---------- Übermittlung an Google Formular ----------
   async function submitToGoogleForm(text, feedback) {
     if (!CONFIG.GOOGLE_FORM_ACTION_URL || CONFIG.GOOGLE_FORM_ACTION_URL.includes("DEINE-FORM-ID")) {
@@ -332,16 +364,8 @@
       return;
     }
     const ids = CONFIG.GOOGLE_FORM_ENTRY_IDS;
-    const bewertungDetails = JSON.stringify(
-      {
-        stärken: feedback.stärken,
-        verbesserungstipps: feedback.verbesserungstipps,
-        kriterien: feedback.kriterien,
-        wortanzahl_hinweis: feedback.wortanzahl_hinweis
-      },
-      null,
-      2
-    );
+    const rubric = RUBRICS[state.format];
+    const bewertungDetails = formatBewertungDetails(feedback, rubric);
 
     const formData = new URLSearchParams();
     formData.append(ids.name, state.name);
