@@ -12,6 +12,24 @@
   const LS_KEY_PREFIX = "schreibtraining_draft_";
   const LS_KEY_PROFILE = "schreibtraining_profile";
 
+  // ---------- Dynamische Fußzeile ----------
+  // Basis: "Lern-App Schreibtraining, erstellt von Thomas Jurtzik"
+  // Mit Kurs: "..., Kurs: <Kurs>. erstellt von Thomas Jurtzik"
+  // Mit Aufgabe: "..., Kurs: <Kurs>, <Aufgabe>. erstellt von Thomas Jurtzik"
+  const FOOTER_APP_NAME = "Schreibtraining";
+  function updateFooterText() {
+    const footerEl = document.getElementById("appFooter");
+    if (!footerEl) return;
+    if (!state.kurs) {
+      footerEl.textContent = "Lern-App " + FOOTER_APP_NAME + ", erstellt von Thomas Jurtzik";
+      return;
+    }
+    let text = "Lern-App " + FOOTER_APP_NAME + ", Kurs: " + state.kurs;
+    if (state.task) text += ", " + state.task.title;
+    text += ". erstellt von Thomas Jurtzik";
+    footerEl.textContent = text;
+  }
+
   // Deep-Linking: erlaubt anderen Apps (z. B. der B1-Lern-App), per Link
   // direkt auf eine bestimmte Aufgabe zu verweisen und den Namen mitzugeben,
   // z. B. schreibtraining.jurtzik-lernapps.de/?name=Anna+Muster&taskId=b1-dtz-005
@@ -173,6 +191,7 @@
     `;
     el.inputText.value = loadDraft(task.id);
     updateWordCount();
+    updateFooterText();
     showStep(el.stepWrite);
   }
 
@@ -188,6 +207,7 @@
       return;
     }
     localStorage.setItem(LS_KEY_PROFILE, JSON.stringify({ name: state.name, kurs: state.kurs }));
+    updateFooterText();
     initFormatOptions();
 
     // Deep-Link mit bekannter Aufgabe: Auswahlschritt überspringen und
@@ -217,7 +237,11 @@
     goToWrite(task);
   });
 
-  el.btnBackSelect.addEventListener("click", () => showStep(el.stepSelect));
+  el.btnBackSelect.addEventListener("click", () => {
+    state.task = null;
+    updateFooterText();
+    showStep(el.stepSelect);
+  });
 
   function updateWordCount() {
     const n = wordCount(el.inputText.value);
@@ -258,6 +282,8 @@
   el.btnRetry.addEventListener("click", () => showStep(el.stepWrite));
 
   el.btnNewTask.addEventListener("click", () => {
+    state.task = null;
+    updateFooterText();
     showStep(el.stepSelect);
   });
 
@@ -394,6 +420,7 @@
 
   // ---------- Start ----------
   initIntro();
+  updateFooterText();
 
   // Kommt man mit einem Namen per Deep-Link an (z. B. aus der B1-Lern-App,
   // wo der Name schon eingegeben wurde), muss nicht extra auf "Los geht's"
