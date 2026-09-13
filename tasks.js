@@ -4,8 +4,8 @@
 
    NEUE AUFGABE HINZUFÜGEN:
    Einfach ein weiteres Objekt in TASKS einfügen (id muss eindeutig
-   sein, format muss "DTZ_B1" oder "TELC_B2_BERUF" sein – oder ein
-   neues Format zuerst unten bei RUBRICS ergänzen).
+   sein, format muss "DTZ_B1", "TELC_B2_BERUF" oder "TELC_DTB_B2" sein
+   – oder ein neues Format zuerst unten bei RUBRICS ergänzen).
    ============================================================ */
 
 const RUBRICS = {
@@ -48,6 +48,36 @@ const RUBRICS = {
         label: "Kohärenz und Register",
         beschreibung:
           "Logischer, gut verknüpfter Textaufbau (Konnektoren), passendes Register für einen formellen beruflichen Text, angemessene Anrede/Gruß."
+      },
+      {
+        key: "wortschatz",
+        label: "Wortschatzspektrum und -beherrschung",
+        beschreibung:
+          "Vielfältiger, präziser, berufsbezogener Wortschatz; korrekte Wortwahl."
+      },
+      {
+        key: "grammatik",
+        label: "Strukturenspektrum und -beherrschung (Grammatik)",
+        beschreibung:
+          "Variantenreiche Satzstrukturen (Nebensätze, Passiv, Konjunktiv II u. Ä.) und ihre korrekte Anwendung."
+      }
+    ]
+  },
+  TELC_DTB_B2: {
+    label: "Deutsch-Test für den Beruf (DTB) B2 – Schreiben",
+    niveauziel: "B2",
+    kriterien: [
+      {
+        key: "aufgabenerfüllung",
+        label: "Inhaltliche Angemessenheit / Aufgabenerfüllung",
+        beschreibung:
+          "Wurden bei der E-Mail alle Punkte der Teamleitung umgesetzt bzw. beim Forumsbeitrag die eigene Meinung klar begründet und mit Beispielen belegt?"
+      },
+      {
+        key: "kohärenz_register",
+        label: "Kohärenz und Register",
+        beschreibung:
+          "Logischer, in sinnvolle Abschnitte gegliederter Text; bei der E-Mail durchgehend angemessene, höfliche Sprache gegenüber dem Kunden (Anrede, formelles Register)."
       },
       {
         key: "wortschatz",
@@ -204,74 +234,956 @@ const TASKS = [
     hinweis: "Formeller Ton, mit passender Anrede (z. B. Sehr geehrte Damen und Herren) und Grußformel."
   },
 
-  // ---------------- telc B2 Beruf ----------------
+  // ---------------- DTZ B1 – kapitelweise (Schreibfahrplan B1, Kap. 1–6) ----------------
+  // Freischaltung erfolgt Kapitel für Kapitel: aktiv auf true setzen, sobald
+  // das Kapitel im Unterricht behandelt wurde. Mit ?vorschau=1 lassen sich
+  // alle Aufgaben schon vorab ansehen (siehe app.js). Pro Kapitel eine
+  // formelle Aufgabe (Sie-Anrede, an eine Institution/ein Unternehmen) und
+  // eine informelle (an eine bekannte Person) – analog zur Aufgabe-A/B-
+  // Struktur der echten DTZ-Prüfung, bei der TN in der Prüfung nur eine
+  // bearbeiten, hier zum Üben aber beide. Je 4 Punkte, wie im echten Test.
+  // Handlungsfeld-Tags nach dem BAMF-Rahmencurriculum für Integrationskurse.
   {
-    id: "b2-telc-001",
-    format: "TELC_B2_BERUF",
-    formatLabel: "telc Zertifikat Beruf B2 – Schreiben",
-    title: "Formelle E-Mail: Beschwerde über eine Lieferung",
+    id: "b1-dtz-k1-1",
+    format: "DTZ_B1",
+    formatLabel: "DTZ B1 – Schreiben",
+    kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 1,
+    register: "formell",
+    handlungsfeld: "Aus- und Weiterbildung",
+    title: "Anfrage an das Auslandsamt",
     situation:
-      "Ihre Firma hat eine Bestellung erhalten, die nicht der Bestellung entspricht (falsche Menge, beschädigte Ware o. Ä.). Schreiben Sie eine formelle E-Mail an den Lieferanten.",
+      "Sie überlegen, ein Auslandssemester zu machen (z. B. über Erasmus+), und schreiben eine E-Mail an das Akademische Auslandsamt Ihrer Schule.",
     punkte: [
-      "Beschreiben Sie das Problem konkret.",
-      "Erklären Sie die Folgen für Ihr Unternehmen.",
-      "Fordern Sie eine konkrete Lösung (Ersatzlieferung, Gutschrift o. Ä.).",
-      "Setzen Sie eine angemessene Frist."
+      "Erklären Sie, warum Sie sich für ein Auslandssemester interessieren.",
+      "Fragen Sie nach den Voraussetzungen und der Bewerbungsfrist.",
+      "Fragen Sie nach Fördermöglichkeiten (z. B. einem Stipendium).",
+      "Bitten Sie um einen Termin für ein Beratungsgespräch."
     ],
-    minWords: 180,
-    maxWords: 220,
-    hinweis: "Formelles Register, klare Struktur mit Einleitung, Hauptteil, Schluss."
+    minWords: 80,
+    maxWords: 150,
+    hinweis: "Formeller Ton, mit passender Anrede (z. B. Sehr geehrte Damen und Herren) und Grußformel."
   },
   {
-    id: "b2-telc-002",
-    format: "TELC_B2_BERUF",
-    formatLabel: "telc Zertifikat Beruf B2 – Schreiben",
-    title: "Stellungnahme: Homeoffice-Regelung im Unternehmen",
+    id: "b1-dtz-k1-2",
+    format: "DTZ_B1",
+    formatLabel: "DTZ B1 – Schreiben",
+    kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 1,
+    register: "informell",
+    handlungsfeld: "Gestaltung sozialer Kontakte · übergreifend",
+    title: "Eine neue Bekanntschaft",
     situation:
-      "Ihr Unternehmen überlegt, die Möglichkeit für Homeoffice einzuschränken. Die Geschäftsführung bittet die Mitarbeitenden um eine schriftliche Stellungnahme.",
+      "Sie haben auf einer Party jemanden kennengelernt und möchten sich noch einmal verabreden. Schreiben Sie eine Nachricht an diese Person.",
     punkte: [
-      "Nennen Sie Vor- und Nachteile von Homeoffice aus Ihrer Sicht.",
-      "Beziehen Sie sich auf konkrete Erfahrungen aus Ihrem Arbeitsalltag.",
-      "Machen Sie einen konstruktiven Vorschlag für eine Regelung.",
-      "Formulieren Sie eine klare abschließende Position."
+      "Bedanken Sie sich für den netten Abend.",
+      "Schlagen Sie Termin und Ort für ein Treffen vor.",
+      "Fragen Sie nach einem gemeinsamen Interesse.",
+      "Schlagen Sie eine konkrete gemeinsame Aktivität vor."
     ],
-    minWords: 180,
-    maxWords: 220,
-    hinweis: "Sachlich-formeller Ton, gut strukturierte Argumentation mit Konnektoren."
+    minWords: 80,
+    maxWords: 150,
+    hinweis: "Informeller, freundlicher Ton, wie bei einer Nachricht an eine neue Bekanntschaft."
   },
   {
-    id: "b2-telc-003",
-    format: "TELC_B2_BERUF",
-    formatLabel: "telc Zertifikat Beruf B2 – Schreiben",
-    title: "Formelle E-Mail: Terminverschiebung für ein Projektmeeting",
+    id: "b1-dtz-k2-1",
+    format: "DTZ_B1",
+    formatLabel: "DTZ B1 – Schreiben",
+    kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 2,
+    register: "formell",
+    handlungsfeld: "Einkaufen",
+    title: "Anfrage an die Theaterkasse",
     situation:
-      "Ein wichtiges Projektmeeting mit einem Geschäftspartner steht an, aber Sie können den vorgeschlagenen Termin nicht wahrnehmen. Schreiben Sie eine E-Mail an den Geschäftspartner.",
+      "Sie möchten mit einer kleinen Gruppe (z. B. Kolleg:innen) ins Theater gehen und schreiben eine E-Mail an die Theaterkasse.",
     punkte: [
-      "Erklären Sie höflich, warum der Termin nicht passt.",
-      "Schlagen Sie mindestens zwei alternative Termine vor.",
-      "Betonen Sie die Wichtigkeit des Treffens für die Zusammenarbeit.",
-      "Bitten Sie um eine kurze Bestätigung."
+      "Nennen Sie das Stück und den gewünschten Termin.",
+      "Fragen Sie nach verfügbaren Plätzen für eine Gruppe.",
+      "Fragen Sie, ob es einen Gruppenrabatt gibt.",
+      "Bitten Sie um eine schnelle Rückmeldung."
     ],
-    minWords: 180,
-    maxWords: 220,
-    hinweis: "Diplomatisches, professionelles Register."
+    minWords: 80,
+    maxWords: 150,
+    hinweis: "Formeller Ton, klare und knappe Fragen."
   },
   {
-    id: "b2-telc-004",
+    id: "b1-dtz-k2-2",
+    format: "DTZ_B1",
+    formatLabel: "DTZ B1 – Schreiben",
+    kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 2,
+    register: "informell",
+    handlungsfeld: "Umgang mit Dissens & Konflikten · übergreifend",
+    title: "Eine Absage klären",
+    situation:
+      "Sie müssen eine Verabredung zum zweiten Mal verschieben, und Ihre Freundin/Ihr Freund ist darüber etwas enttäuscht. Schreiben Sie eine Nachricht an diese Person.",
+    punkte: [
+      "Entschuldigen Sie sich und erklären Sie den Grund.",
+      "Gehen Sie auf die Enttäuschung ein (z. B. Verständnis zeigen).",
+      "Schlagen Sie einen neuen, verbindlichen Termin vor.",
+      "Machen Sie einen kleinen Vorschlag, um es wiedergutzumachen."
+    ],
+    minWords: 80,
+    maxWords: 150,
+    hinweis: "Nutzen Sie höfliche Formulierungen, um sich zu entschuldigen und die Enttäuschung anzusprechen."
+  },
+  {
+    id: "b1-dtz-k3-1",
+    format: "DTZ_B1",
+    formatLabel: "DTZ B1 – Schreiben",
+    kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 3,
+    register: "formell",
+    handlungsfeld: "Gefühle, Haltungen & Meinungen · übergreifend",
+    title: "Anfrage an einen Verein",
+    situation:
+      "Sie interessieren sich für ein Ehrenamt in einem Verein oder einer Bürgerinitiative in Ihrer Stadt. Schreiben Sie eine E-Mail an den Verein.",
+    punkte: [
+      "Erklären Sie, warum Ihnen das Thema wichtig ist.",
+      "Fragen Sie, wie man sich engagieren kann.",
+      "Nennen Sie einen Zeitpunkt, an dem Sie Zeit hätten.",
+      "Fragen Sie, ob vorher ein persönliches Kennenlernen möglich ist."
+    ],
+    minWords: 80,
+    maxWords: 150,
+    hinweis: "Formeller, aber freundlicher Ton, da Sie sich an einen Verein wenden."
+  },
+  {
+    id: "b1-dtz-k3-2",
+    format: "DTZ_B1",
+    formatLabel: "DTZ B1 – Schreiben",
+    kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 3,
+    register: "informell",
+    handlungsfeld: "Wohnen",
+    title: "Bitte um Unterstützung",
+    situation:
+      "In Ihrer Nachbarschaft wird eine kleine Aktion organisiert (z. B. ein Hoffest oder eine Sammlung), und Sie bitten eine Nachbarin/einen Nachbarn um Hilfe.",
+    punkte: [
+      "Beschreiben Sie die Aktion kurz.",
+      "Bitten Sie konkret um Unterstützung (Zeit, Sachen oder Geld).",
+      "Nennen Sie, bis wann Sie eine Antwort brauchen.",
+      "Bedanken Sie sich schon einmal im Voraus."
+    ],
+    minWords: 80,
+    maxWords: 150,
+    hinweis: "Beschreiben Sie die Aktion konkret und formulieren Sie Ihre Bitte klar."
+  },
+  {
+    id: "b1-dtz-k4-1",
+    format: "DTZ_B1",
+    formatLabel: "DTZ B1 – Schreiben",
+    kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 4,
+    register: "formell",
+    handlungsfeld: "Mobilität",
+    title: "Anfrage bei einer Unterkunft",
+    situation:
+      "Sie möchten mit Freund:innen einen Kurzurlaub in der Natur machen und schreiben eine E-Mail an eine Unterkunft (z. B. Ferienhaus oder Pension).",
+    punkte: [
+      "Nennen Sie den gewünschten Zeitraum und die Personenzahl.",
+      "Fragen Sie nach Verfügbarkeit und Preis.",
+      "Fragen Sie, ob Haustiere oder Fahrräder erlaubt sind.",
+      "Bitten Sie um eine schnelle Rückmeldung."
+    ],
+    minWords: 80,
+    maxWords: 150,
+    hinweis: "Formeller Ton, mit konkreten Angaben zu Zeitraum und Personenzahl."
+  },
+  {
+    id: "b1-dtz-k4-2",
+    format: "DTZ_B1",
+    formatLabel: "DTZ B1 – Schreiben",
+    kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 4,
+    register: "informell",
+    handlungsfeld: "Gestaltung sozialer Kontakte · übergreifend",
+    title: "Rückmeldung zur Unterkunft",
+    situation:
+      "Sie waren in einer Unterkunft, die Ihnen eine Freundin/ein Freund empfohlen hat. Schreiben Sie dieser Person eine Rückmeldung.",
+    punkte: [
+      "Bedanken Sie sich für den Tipp.",
+      "Beschreiben Sie kurz, wie es war.",
+      "Sagen Sie, ob Sie die Unterkunft weiterempfehlen würden.",
+      "Schlagen Sie vor, gemeinsam noch einmal hinzufahren."
+    ],
+    minWords: 80,
+    maxWords: 150,
+    hinweis: "Bedanken Sie sich zuerst, bevor Sie Ihre Rückmeldung geben."
+  },
+  {
+    id: "b1-dtz-k5-1",
+    format: "DTZ_B1",
+    formatLabel: "DTZ B1 – Schreiben",
+    kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 5,
+    register: "formell",
+    handlungsfeld: "Ämter und Behörden",
+    title: "Anfrage beim Konsulat",
+    situation:
+      "Sie brauchen für ein Familiendokument (z. B. eine Geburtsurkunde) eine amtliche Bestätigung aus Ihrem Heimatland und schreiben eine E-Mail an das zuständige Konsulat.",
+    punkte: [
+      "Erklären Sie, welches Dokument Sie benötigen und warum.",
+      "Fragen Sie, welche Unterlagen Sie dafür einreichen müssen.",
+      "Fragen Sie nach der Bearbeitungsdauer.",
+      "Bitten Sie um einen Termin."
+    ],
+    minWords: 80,
+    maxWords: 150,
+    hinweis: "Formeller Ton, mit passender Anrede und Grußformel."
+  },
+  {
+    id: "b1-dtz-k5-2",
+    format: "DTZ_B1",
+    formatLabel: "DTZ B1 – Schreiben",
+    kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 5,
+    register: "informell",
+    handlungsfeld: "Umgang mit der Migrationssituation · übergreifend",
+    title: "Neuigkeiten für die Familie",
+    situation:
+      "Sie haben eine wichtige Neuigkeit (z. B. Umzug oder neue Arbeit) und schreiben einem Familienmitglied.",
+    punkte: [
+      "Erzählen Sie die Neuigkeit.",
+      "Erklären Sie kurz, warum Sie sich so entschieden haben.",
+      "Fragen Sie nach der Meinung der Person.",
+      "Laden Sie die Person ein, Sie bald zu besuchen."
+    ],
+    minWords: 80,
+    maxWords: 150,
+    hinweis: "Persönliche, familiäre Anrede und Grußformel."
+  },
+  {
+    id: "b1-dtz-k6-1",
+    format: "DTZ_B1",
+    formatLabel: "DTZ B1 – Schreiben",
+    kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 6,
+    register: "formell",
+    handlungsfeld: "Arbeit",
+    title: "Anfrage für eine Weihnachtsfeier",
+    situation:
+      "Sie organisieren die Weihnachtsfeier für Ihre Abteilung und schreiben eine E-Mail an ein Restaurant, um einen Tisch zu reservieren.",
+    punkte: [
+      "Nennen Sie Datum, Uhrzeit und Personenzahl.",
+      "Fragen Sie nach einem passenden Menü (auch für Vegetarier:innen).",
+      "Fragen Sie nach den Kosten pro Person.",
+      "Bitten Sie um eine schriftliche Bestätigung."
+    ],
+    minWords: 80,
+    maxWords: 150,
+    hinweis: "Formeller Ton, mit allen wichtigen Angaben für die Reservierung."
+  },
+  {
+    id: "b1-dtz-k6-2",
+    format: "DTZ_B1",
+    formatLabel: "DTZ B1 – Schreiben",
+    kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 6,
+    register: "informell",
+    handlungsfeld: "Gestaltung sozialer Kontakte · übergreifend",
+    title: "Einladung zur Feier",
+    situation:
+      "Sie feiern mit Kolleg:innen oder Nachbar:innen eine Feier und laden jemanden ein.",
+    punkte: [
+      "Laden Sie die Person herzlich ein.",
+      "Nennen Sie Ort und Uhrzeit.",
+      "Fragen Sie, ob sie etwas mitbringen möchte.",
+      "Bitten Sie um eine Rückmeldung bis zu einem bestimmten Datum."
+    ],
+    minWords: 80,
+    maxWords: 150,
+    hinweis: "Herzliche Einladung mit konkreten Angaben zu Ort und Uhrzeit."
+  },
+
+  // ---------------- telc B2 Beruf – kapitelweise (Schreibfahrplan, BSK-B1+ Kap. 1–3) ----------------
+  // Format-Annahme (mit Thomas noch nicht anhand einer echten Prüfungsvorlage
+  // belegt, siehe Hinweis im Schreibfahrplan-Artefakt): analog zur bereits
+  // umgestellten Sprech-Prüfung nutzt BSK-B1+ hier telc Zertifikat Beruf B2
+  // statt DTZ B1, da die DTZ-B1-Inhalte sprachlich nicht mehr zum Kursniveau
+  // passten. Pro Kapitel eine formelle E-Mail/ein Brief (Sie) und eine
+  // informelle, aber arbeitsbezogene Nachricht an eine Kollegin/einen
+  // Kollegen (du) – etwas kürzerer Umfang als bei vollem B2 (Brückenkurs).
+  {
+    id: "bskb1p-telc-k1-1",
     format: "TELC_B2_BERUF",
     formatLabel: "telc Zertifikat Beruf B2 – Schreiben",
-    title: "Stellungnahme: Weiterbildungsangebote im Betrieb",
+    kurse: ["BSK-B1+ Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 1,
+    register: "formell",
+    handlungsfeld: "Berufliche Aus-/Fort-/Weiterbildung",
+    title: "Anfrage bei einer Weiterbildungseinrichtung",
     situation:
-      "Ihr Betrieb plant, das interne Weiterbildungsbudget zu kürzen. Der Betriebsrat bittet um eine schriftliche Meinungsäußerung der Belegschaft.",
+      "Sie überlegen, sich beruflich weiterzubilden, und schreiben eine E-Mail an eine Weiterbildungseinrichtung (z. B. eine Kammer oder Akademie).",
     punkte: [
-      "Beschreiben Sie, welche Bedeutung Weiterbildung für Sie persönlich hat.",
-      "Nennen Sie mögliche negative Folgen der Kürzung für den Betrieb.",
-      "Schlagen Sie eine alternative Lösung vor (z. B. andere Einsparungen).",
-      "Fassen Sie Ihre Position abschließend klar zusammen."
+      "Beschreiben Sie kurz Ihre berufliche Situation und Ihr Ziel.",
+      "Fragen Sie nach passenden Kursangeboten und deren Dauer.",
+      "Fragen Sie nach den Kosten und möglichen Fördermöglichkeiten.",
+      "Bitten Sie um eine Beratung, gerne auch telefonisch."
+    ],
+    minWords: 120,
+    maxWords: 180,
+    hinweis: "Formelles Register, passende Anrede und Grußformel."
+  },
+  {
+    id: "bskb1p-telc-k1-2",
+    format: "TELC_B2_BERUF",
+    formatLabel: "telc Zertifikat Beruf B2 – Schreiben",
+    kurse: ["BSK-B1+ Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 1,
+    register: "informell",
+    handlungsfeld: "Gestaltung sozialer Kontakte am Arbeitsplatz",
+    title: "Rat von einer Kollegin/einem Kollegen",
+    situation:
+      "Sie überlegen sich weiterzubilden und schreiben einer erfahrenen Kollegin/einem erfahrenen Kollegen eine kurze Nachricht.",
+    punkte: [
+      "Erzählen Sie, welche Weiterbildung Sie interessiert.",
+      "Fragen Sie nach ihrer/seiner Meinung dazu.",
+      "Fragen Sie, ob sie/er selbst schon Erfahrung damit hat.",
+      "Bitten Sie um einen Tipp, worauf Sie achten sollten."
+    ],
+    minWords: 120,
+    maxWords: 180,
+    hinweis: "Kollegialer, aber respektvoller Ton (du, aber am Arbeitsplatz)."
+  },
+  {
+    id: "bskb1p-telc-k2-1",
+    format: "TELC_B2_BERUF",
+    formatLabel: "telc Zertifikat Beruf B2 – Schreiben",
+    kurse: ["BSK-B1+ Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 2,
+    register: "formell",
+    handlungsfeld: "Arbeitssuche und Bewerbung",
+    title: "Nachfrage zum Bewerbungsstatus",
+    situation:
+      "Sie haben sich vor einigen Wochen beworben und noch keine Rückmeldung erhalten. Schreiben Sie eine E-Mail an die Personalabteilung.",
+    punkte: [
+      "Erinnern Sie höflich an Ihre Bewerbung (Datum, Stelle).",
+      "Fragen Sie nach dem aktuellen Stand des Verfahrens.",
+      "Bieten Sie an, fehlende Unterlagen nachzureichen.",
+      "Bitten Sie um eine Rückmeldung bis zu einem bestimmten Datum."
+    ],
+    minWords: 120,
+    maxWords: 180,
+    hinweis: "Höflich-bestimmter Ton, ohne ungeduldig zu wirken."
+  },
+  {
+    id: "bskb1p-telc-k2-2",
+    format: "TELC_B2_BERUF",
+    formatLabel: "telc Zertifikat Beruf B2 – Schreiben",
+    kurse: ["BSK-B1+ Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 2,
+    register: "informell",
+    handlungsfeld: "Gestaltung sozialer Kontakte am Arbeitsplatz",
+    title: "Frust nach einer Absage",
+    situation:
+      "Sie haben wieder eine Absage bekommen und schreiben einer guten Freundin/einem guten Freund darüber.",
+    punkte: [
+      "Erzählen Sie von der Absage und wie es Ihnen damit geht.",
+      "Erklären Sie, was Sie schon versucht haben.",
+      "Fragen Sie nach einem Rat oder einer Empfehlung.",
+      "Schlagen Sie vor, sich bald zu treffen und darüber zu sprechen."
+    ],
+    minWords: 120,
+    maxWords: 180,
+    hinweis: "Persönlicher, informeller Ton."
+  },
+  {
+    id: "bskb1p-telc-k3-1",
+    format: "TELC_B2_BERUF",
+    formatLabel: "telc Zertifikat Beruf B2 – Schreiben",
+    kurse: ["BSK-B1+ Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 3,
+    register: "formell",
+    handlungsfeld: "Arbeitsantritt",
+    title: "Fragen vor dem ersten Arbeitstag",
+    situation:
+      "Sie haben eine neue Stelle bekommen und schreiben vor dem ersten Arbeitstag eine E-Mail an Ihre neue Führungskraft.",
+    punkte: [
+      "Bedanken Sie sich für die Zusage.",
+      "Fragen Sie nach organisatorischen Details (Uhrzeit, Ansprechperson, Kleidung).",
+      "Fragen Sie, ob Sie etwas mitbringen oder vorbereiten sollen.",
+      "Drücken Sie Ihre Vorfreude auf die neue Stelle aus."
+    ],
+    minWords: 120,
+    maxWords: 180,
+    hinweis: "Formeller, freundlicher Ton."
+  },
+  {
+    id: "bskb1p-telc-k3-2",
+    format: "TELC_B2_BERUF",
+    formatLabel: "telc Zertifikat Beruf B2 – Schreiben",
+    kurse: ["BSK-B1+ Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 3,
+    register: "informell",
+    handlungsfeld: "Gestaltung sozialer Kontakte am Arbeitsplatz",
+    title: "Hilfe für eine neue Kollegin/einen neuen Kollegen",
+    situation:
+      "Eine neue Kollegin/ein neuer Kollege wirkt am ersten Tag etwas unsicher. Schreiben Sie ihr/ihm eine kurze Nachricht.",
+    punkte: [
+      "Heißen Sie die Person willkommen.",
+      "Bieten Sie konkret Ihre Hilfe an.",
+      "Erklären Sie kurz eine wichtige Regel oder Gewohnheit im Team.",
+      "Schlagen Sie vor, gemeinsam Mittag zu essen."
+    ],
+    minWords: 120,
+    maxWords: 180,
+    hinweis: "Warmherziger, kollegialer Ton."
+  },
+
+  // ---------------- telc DTB B2 – kapitelweise (Schreibfahrplan, BSK-B2 Kap. 1–8) ----------------
+  // Format bestätigt anhand eines echten Modelltests (telc "Deutsch-Test für
+  // den Beruf B2"): pro Kapitel eine formelle E-Mail-Antwort auf eine von der
+  // Teamleitung delegierte Kundenreklamation, plus – wie beim B1-Aufgabenpaar
+  // – BEIDE Forumsthemen (A und B), nicht nur eins wie in der echten Prüfung.
+  // Die Forumsbeiträge nutzen ein festes 4-Punkte-Gerüst (Meinung, zwei
+  // Argumente, ein Beispiel, ein Gegenargument) statt inhaltlicher
+  // Detailpunkte. Ersetzt die vier früheren, generischen telc-B2-Aufgaben.
+  {
+    id: "bskb2-dtb-k1-1",
+    format: "TELC_DTB_B2",
+    formatLabel: "Deutsch-Test für den Beruf B2 – Schreiben",
+    kurse: ["BSK-B2 Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 1,
+    register: "formell",
+    handlungsfeld: "Arbeitssuche und Bewerbung",
+    title: "Beschwerde nach einer Berufsberatung",
+    situation:
+      "Eine Teilnehmerin/ein Teilnehmer hat sich über eine Berufsberatung in Ihrem Unternehmen beschwert (unpünktlich, wenig hilfreich). Ihre Teamleitung leitet die E-Mail an Sie weiter und bittet Sie um eine Antwort.",
+    punkte: [
+      "Entschuldigen Sie sich im Namen des Unternehmens.",
+      "Erklären Sie einen möglichen Grund für den schlechten Ablauf.",
+      "Bieten Sie einen neuen, kostenlosen Beratungstermin an.",
+      "Erklären Sie, was Sie künftig verbessern werden."
     ],
     minWords: 180,
     maxWords: 220,
-    hinweis: "Argumentativer Aufbau, gehobenes Register, Bezug zu eigenen beruflichen Erfahrungen."
+    hinweis: "Formelles Register, angemessene Anrede/Gruß gegenüber dem Kunden."
+  },
+  {
+    id: "bskb2-dtb-k1-2",
+    format: "TELC_DTB_B2",
+    formatLabel: "Deutsch-Test für den Beruf B2 – Schreiben",
+    kurse: ["BSK-B2 Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 1,
+    register: "meinung",
+    handlungsfeld: "Realisierung von Gefühlen/Haltungen/Meinungen",
+    title: "Forumsbeitrag (Thema A): Praktika für Schüler:innen",
+    situation:
+      "Im internen Firmenforum wird diskutiert: „Praktika für Schüler:innen – sinnvolle Investition oder nur zusätzlicher Aufwand?“ Schreiben Sie Ihre Meinung.",
+    punkte: [
+      "Nennen Sie Ihre Meinung zum Thema.",
+      "Nennen Sie mindestens zwei Argumente.",
+      "Bringen Sie ein Beispiel aus der Praxis.",
+      "Gehen Sie kurz auf ein Gegenargument ein."
+    ],
+    minWords: 150,
+    maxWords: 200,
+    hinweis: "Gliedern Sie Ihren Text in sinnvolle Abschnitte."
+  },
+  {
+    id: "bskb2-dtb-k1-3",
+    format: "TELC_DTB_B2",
+    formatLabel: "Deutsch-Test für den Beruf B2 – Schreiben",
+    kurse: ["BSK-B2 Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 1,
+    register: "meinung",
+    handlungsfeld: "Realisierung von Gefühlen/Haltungen/Meinungen",
+    title: "Forumsbeitrag (Thema B): Nachwuchswerbung an Schulen",
+    situation:
+      "Im internen Firmenforum wird diskutiert: „Sollten Unternehmen aktiv an Schulen für sich werben?“ Schreiben Sie Ihre Meinung.",
+    punkte: [
+      "Nennen Sie Ihre Meinung zum Thema.",
+      "Nennen Sie mindestens zwei Argumente.",
+      "Bringen Sie ein Beispiel aus der Praxis.",
+      "Gehen Sie kurz auf ein Gegenargument ein."
+    ],
+    minWords: 150,
+    maxWords: 200,
+    hinweis: "Gliedern Sie Ihren Text in sinnvolle Abschnitte."
+  },
+  {
+    id: "bskb2-dtb-k2-1",
+    format: "TELC_DTB_B2",
+    formatLabel: "Deutsch-Test für den Beruf B2 – Schreiben",
+    kurse: ["BSK-B2 Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 2,
+    register: "formell",
+    handlungsfeld: "Arbeitsalltag: Außenkontakte",
+    title: "Beschwerde nach einer Unternehmensbesichtigung",
+    situation:
+      "Eine Besuchergruppe beschwert sich über eine Unternehmensbesichtigung (Verspätung, schlechte Organisation). Ihre Teamleitung bittet Sie um eine Antwort.",
+    punkte: [
+      "Entschuldigen Sie sich für den schlechten Ablauf.",
+      "Erklären Sie einen möglichen Grund (z. B. eine kurzfristige Terminkollision).",
+      "Bieten Sie einen neuen Besichtigungstermin an.",
+      "Bieten Sie eine kleine Wiedergutmachung an (z. B. Informationsmaterial, kleines Präsent)."
+    ],
+    minWords: 180,
+    maxWords: 220,
+    hinweis: "Formelles Register, angemessene Anrede/Gruß gegenüber dem Kunden."
+  },
+  {
+    id: "bskb2-dtb-k2-2",
+    format: "TELC_DTB_B2",
+    formatLabel: "Deutsch-Test für den Beruf B2 – Schreiben",
+    kurse: ["BSK-B2 Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 2,
+    register: "meinung",
+    handlungsfeld: "Realisierung von Gefühlen/Haltungen/Meinungen",
+    title: "Forumsbeitrag (Thema A): Großraumbüro oder Einzelbüro?",
+    situation:
+      "Im internen Firmenforum wird diskutiert: „Großraumbüro oder Einzelbüro – was ist besser für die Produktivität?“ Schreiben Sie Ihre Meinung.",
+    punkte: [
+      "Nennen Sie Ihre Meinung zum Thema.",
+      "Nennen Sie mindestens zwei Argumente.",
+      "Bringen Sie ein Beispiel aus der Praxis.",
+      "Gehen Sie kurz auf ein Gegenargument ein."
+    ],
+    minWords: 150,
+    maxWords: 200,
+    hinweis: "Gliedern Sie Ihren Text in sinnvolle Abschnitte."
+  },
+  {
+    id: "bskb2-dtb-k2-3",
+    format: "TELC_DTB_B2",
+    formatLabel: "Deutsch-Test für den Beruf B2 – Schreiben",
+    kurse: ["BSK-B2 Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 2,
+    register: "meinung",
+    handlungsfeld: "Realisierung von Gefühlen/Haltungen/Meinungen",
+    title: "Forumsbeitrag (Thema B): Mehr Homeoffice-Tage?",
+    situation:
+      "Im internen Firmenforum wird diskutiert: „Sollten Firmen mehr Homeoffice-Tage anbieten?“ Schreiben Sie Ihre Meinung.",
+    punkte: [
+      "Nennen Sie Ihre Meinung zum Thema.",
+      "Nennen Sie mindestens zwei Argumente.",
+      "Bringen Sie ein Beispiel aus der Praxis.",
+      "Gehen Sie kurz auf ein Gegenargument ein."
+    ],
+    minWords: 150,
+    maxWords: 200,
+    hinweis: "Gliedern Sie Ihren Text in sinnvolle Abschnitte."
+  },
+  {
+    id: "bskb2-dtb-k3-1",
+    format: "TELC_DTB_B2",
+    formatLabel: "Deutsch-Test für den Beruf B2 – Schreiben",
+    kurse: ["BSK-B2 Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 3,
+    register: "formell",
+    handlungsfeld: "Arbeitssuche und Bewerbung",
+    title: "Beschwerde einer Bewerberin/eines Bewerbers",
+    situation:
+      "Eine Bewerberin/ein Bewerber beschwert sich, seit Wochen keine Rückmeldung erhalten zu haben, obwohl eine feste Frist genannt wurde. Ihre Teamleitung bittet um eine höfliche, erklärende Antwort.",
+    punkte: [
+      "Entschuldigen Sie sich für die Verzögerung.",
+      "Nennen Sie einen Grund (z. B. eine ungewöhnlich hohe Bewerberzahl).",
+      "Teilen Sie den aktuellen Stand des Verfahrens mit.",
+      "Nennen Sie ein konkretes neues Datum für die Rückmeldung."
+    ],
+    minWords: 180,
+    maxWords: 220,
+    hinweis: "Formelles Register, angemessene Anrede/Gruß gegenüber dem Kunden."
+  },
+  {
+    id: "bskb2-dtb-k3-2",
+    format: "TELC_DTB_B2",
+    formatLabel: "Deutsch-Test für den Beruf B2 – Schreiben",
+    kurse: ["BSK-B2 Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 3,
+    register: "meinung",
+    handlungsfeld: "Realisierung von Gefühlen/Haltungen/Meinungen",
+    title: "Forumsbeitrag (Thema A): Anonymisierte Bewerbungen?",
+    situation:
+      "Im internen Firmenforum wird diskutiert: „Anonymisierte Bewerbungen – ja oder nein?“ Schreiben Sie Ihre Meinung.",
+    punkte: [
+      "Nennen Sie Ihre Meinung zum Thema.",
+      "Nennen Sie mindestens zwei Argumente.",
+      "Bringen Sie ein Beispiel aus der Praxis.",
+      "Gehen Sie kurz auf ein Gegenargument ein."
+    ],
+    minWords: 150,
+    maxWords: 200,
+    hinweis: "Gliedern Sie Ihren Text in sinnvolle Abschnitte."
+  },
+  {
+    id: "bskb2-dtb-k3-3",
+    format: "TELC_DTB_B2",
+    formatLabel: "Deutsch-Test für den Beruf B2 – Schreiben",
+    kurse: ["BSK-B2 Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 3,
+    register: "meinung",
+    handlungsfeld: "Realisierung von Gefühlen/Haltungen/Meinungen",
+    title: "Forumsbeitrag (Thema B): Sind Einstellungstests aussagekräftig?",
+    situation:
+      "Im internen Firmenforum wird diskutiert: „Sind Einstellungstests wirklich aussagekräftig?“ Schreiben Sie Ihre Meinung.",
+    punkte: [
+      "Nennen Sie Ihre Meinung zum Thema.",
+      "Nennen Sie mindestens zwei Argumente.",
+      "Bringen Sie ein Beispiel aus der Praxis.",
+      "Gehen Sie kurz auf ein Gegenargument ein."
+    ],
+    minWords: 150,
+    maxWords: 200,
+    hinweis: "Gliedern Sie Ihren Text in sinnvolle Abschnitte."
+  },
+  {
+    id: "bskb2-dtb-k4-1",
+    format: "TELC_DTB_B2",
+    formatLabel: "Deutsch-Test für den Beruf B2 – Schreiben",
+    kurse: ["BSK-B2 Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 4,
+    register: "formell",
+    handlungsfeld: "Arbeitsantritt",
+    title: "Beschwerde über eine falsche Auskunft",
+    situation:
+      "Ein Kunde beschwert sich, von einer neuen Mitarbeiterin/einem neuen Mitarbeiter am Empfang falsch informiert worden zu sein. Ihre Teamleitung bittet Sie um eine Antwort.",
+    punkte: [
+      "Entschuldigen Sie sich für die falsche Auskunft.",
+      "Erklären Sie den Grund (z. B. die Einarbeitungsphase der Mitarbeiterin/des Mitarbeiters).",
+      "Liefern Sie die richtige Information nach.",
+      "Bieten Sie eine kleine Geste des Entgegenkommens an."
+    ],
+    minWords: 180,
+    maxWords: 220,
+    hinweis: "Formelles Register, angemessene Anrede/Gruß gegenüber dem Kunden."
+  },
+  {
+    id: "bskb2-dtb-k4-2",
+    format: "TELC_DTB_B2",
+    formatLabel: "Deutsch-Test für den Beruf B2 – Schreiben",
+    kurse: ["BSK-B2 Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 4,
+    register: "meinung",
+    handlungsfeld: "Realisierung von Gefühlen/Haltungen/Meinungen",
+    title: "Forumsbeitrag (Thema A): Fester Mentor für neue Kolleg:innen?",
+    situation:
+      "Im internen Firmenforum wird diskutiert: „Braucht jede neue Kollegin/jeder neue Kollege einen festen Mentor?“ Schreiben Sie Ihre Meinung.",
+    punkte: [
+      "Nennen Sie Ihre Meinung zum Thema.",
+      "Nennen Sie mindestens zwei Argumente.",
+      "Bringen Sie ein Beispiel aus der Praxis.",
+      "Gehen Sie kurz auf ein Gegenargument ein."
+    ],
+    minWords: 150,
+    maxWords: 200,
+    hinweis: "Gliedern Sie Ihren Text in sinnvolle Abschnitte."
+  },
+  {
+    id: "bskb2-dtb-k4-3",
+    format: "TELC_DTB_B2",
+    formatLabel: "Deutsch-Test für den Beruf B2 – Schreiben",
+    kurse: ["BSK-B2 Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 4,
+    register: "meinung",
+    handlungsfeld: "Realisierung von Gefühlen/Haltungen/Meinungen",
+    title: "Forumsbeitrag (Thema B): Wie lange sollte die Probezeit dauern?",
+    situation:
+      "Im internen Firmenforum wird diskutiert: „Wie lange sollte eine Probezeit dauern?“ Schreiben Sie Ihre Meinung.",
+    punkte: [
+      "Nennen Sie Ihre Meinung zum Thema.",
+      "Nennen Sie mindestens zwei Argumente.",
+      "Bringen Sie ein Beispiel aus der Praxis.",
+      "Gehen Sie kurz auf ein Gegenargument ein."
+    ],
+    minWords: 150,
+    maxWords: 200,
+    hinweis: "Gliedern Sie Ihren Text in sinnvolle Abschnitte."
+  },
+  {
+    id: "bskb2-dtb-k5-1",
+    format: "TELC_DTB_B2",
+    formatLabel: "Deutsch-Test für den Beruf B2 – Schreiben",
+    kurse: ["BSK-B2 Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 5,
+    register: "formell",
+    handlungsfeld: "Arbeitsalltag: innerbetriebliche Kommunikation",
+    title: "Beschwerde über widersprüchliche Auskünfte",
+    situation:
+      "Ein Kunde beschwert sich, von zwei verschiedenen Abteilungen widersprüchliche Auskünfte erhalten zu haben. Ihre Teamleitung bittet um eine klärende Antwort.",
+    punkte: [
+      "Entschuldigen Sie sich für die Verwirrung.",
+      "Erklären Sie den Grund (z. B. eine Lücke in der internen Kommunikation).",
+      "Geben Sie die richtige, verbindliche Auskunft.",
+      "Kündigen Sie eine Verbesserung an (z. B. eine feste Ansprechperson)."
+    ],
+    minWords: 180,
+    maxWords: 220,
+    hinweis: "Formelles Register, angemessene Anrede/Gruß gegenüber dem Kunden."
+  },
+  {
+    id: "bskb2-dtb-k5-2",
+    format: "TELC_DTB_B2",
+    formatLabel: "Deutsch-Test für den Beruf B2 – Schreiben",
+    kurse: ["BSK-B2 Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 5,
+    register: "meinung",
+    handlungsfeld: "Realisierung von Gefühlen/Haltungen/Meinungen",
+    title: "Forumsbeitrag (Thema A): Kernarbeitszeit oder Vertrauensarbeitszeit?",
+    situation:
+      "Im internen Firmenforum wird diskutiert: „Feste Kernarbeitszeiten oder komplette Vertrauensarbeitszeit – was ist besser?“ Schreiben Sie Ihre Meinung.",
+    punkte: [
+      "Nennen Sie Ihre Meinung zum Thema.",
+      "Nennen Sie mindestens zwei Argumente.",
+      "Bringen Sie ein Beispiel aus der Praxis.",
+      "Gehen Sie kurz auf ein Gegenargument ein."
+    ],
+    minWords: 150,
+    maxWords: 200,
+    hinweis: "Gliedern Sie Ihren Text in sinnvolle Abschnitte."
+  },
+  {
+    id: "bskb2-dtb-k5-3",
+    format: "TELC_DTB_B2",
+    formatLabel: "Deutsch-Test für den Beruf B2 – Schreiben",
+    kurse: ["BSK-B2 Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 5,
+    register: "meinung",
+    handlungsfeld: "Realisierung von Gefühlen/Haltungen/Meinungen",
+    title: "Forumsbeitrag (Thema B): Private Handynutzung am Arbeitsplatz",
+    situation:
+      "Im internen Firmenforum wird diskutiert: „Private Handynutzung am Arbeitsplatz – wo sind die Grenzen?“ Schreiben Sie Ihre Meinung.",
+    punkte: [
+      "Nennen Sie Ihre Meinung zum Thema.",
+      "Nennen Sie mindestens zwei Argumente.",
+      "Bringen Sie ein Beispiel aus der Praxis.",
+      "Gehen Sie kurz auf ein Gegenargument ein."
+    ],
+    minWords: 150,
+    maxWords: 200,
+    hinweis: "Gliedern Sie Ihren Text in sinnvolle Abschnitte."
+  },
+  {
+    id: "bskb2-dtb-k6-1",
+    format: "TELC_DTB_B2",
+    formatLabel: "Deutsch-Test für den Beruf B2 – Schreiben",
+    kurse: ["BSK-B2 Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 6,
+    register: "formell",
+    handlungsfeld: "Regularien am Arbeitsplatz",
+    title: "Beschwerde über eine falsche Bestellung",
+    situation:
+      "Ein Kunde beschwert sich, dass durch einen internen Fehler im Ablauf die falsche Menge/Ausführung geliefert wurde. Ihre Teamleitung bittet Sie um eine Antwort.",
+    punkte: [
+      "Entschuldigen Sie sich für den Fehler.",
+      "Erklären Sie kurz, wo der Fehler im Ablauf entstanden ist.",
+      "Bieten Sie eine Lösung an (Austausch oder Gutschrift).",
+      "Beschreiben Sie, wie der Ablauf künftig verbessert wird."
+    ],
+    minWords: 180,
+    maxWords: 220,
+    hinweis: "Formelles Register, angemessene Anrede/Gruß gegenüber dem Kunden."
+  },
+  {
+    id: "bskb2-dtb-k6-2",
+    format: "TELC_DTB_B2",
+    formatLabel: "Deutsch-Test für den Beruf B2 – Schreiben",
+    kurse: ["BSK-B2 Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 6,
+    register: "meinung",
+    handlungsfeld: "Realisierung von Gefühlen/Haltungen/Meinungen",
+    title: "Forumsbeitrag (Thema A): Mehr Digitalisierung der Arbeitsabläufe?",
+    situation:
+      "Im internen Firmenforum wird diskutiert: „Sollten Arbeitsabläufe stärker digitalisiert und automatisiert werden?“ Schreiben Sie Ihre Meinung.",
+    punkte: [
+      "Nennen Sie Ihre Meinung zum Thema.",
+      "Nennen Sie mindestens zwei Argumente.",
+      "Bringen Sie ein Beispiel aus der Praxis.",
+      "Gehen Sie kurz auf ein Gegenargument ein."
+    ],
+    minWords: 150,
+    maxWords: 200,
+    hinweis: "Gliedern Sie Ihren Text in sinnvolle Abschnitte."
+  },
+  {
+    id: "bskb2-dtb-k6-3",
+    format: "TELC_DTB_B2",
+    formatLabel: "Deutsch-Test für den Beruf B2 – Schreiben",
+    kurse: ["BSK-B2 Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 6,
+    register: "meinung",
+    handlungsfeld: "Realisierung von Gefühlen/Haltungen/Meinungen",
+    title: "Forumsbeitrag (Thema B): Feste Checklisten oder mehr Freiraum?",
+    situation:
+      "Im internen Firmenforum wird diskutiert: „Feste Checklisten oder mehr Freiraum bei der Aufgabenerledigung – was funktioniert besser?“ Schreiben Sie Ihre Meinung.",
+    punkte: [
+      "Nennen Sie Ihre Meinung zum Thema.",
+      "Nennen Sie mindestens zwei Argumente.",
+      "Bringen Sie ein Beispiel aus der Praxis.",
+      "Gehen Sie kurz auf ein Gegenargument ein."
+    ],
+    minWords: 150,
+    maxWords: 200,
+    hinweis: "Gliedern Sie Ihren Text in sinnvolle Abschnitte."
+  },
+  {
+    id: "bskb2-dtb-k7-1",
+    format: "TELC_DTB_B2",
+    formatLabel: "Deutsch-Test für den Beruf B2 – Schreiben",
+    kurse: ["BSK-B2 Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 7,
+    register: "formell",
+    handlungsfeld: "Regularien am Arbeitsplatz",
+    title: "Beschwerde über ein defektes Produkt",
+    situation:
+      "Ein Kunde beschwert sich über ein defektes Produkt. Ihre Teamleitung leitet die Beschwerde weiter und bittet Sie um eine Antwort.",
+    punkte: [
+      "Entschuldigen Sie sich für den Mangel.",
+      "Erklären Sie einen möglichen Grund für den Defekt.",
+      "Bieten Sie eine Lösung an (Ersatz, Reparatur oder Rückerstattung).",
+      "Nennen Sie eine Maßnahme zur Qualitätsverbesserung."
+    ],
+    minWords: 180,
+    maxWords: 220,
+    hinweis: "Formelles Register, angemessene Anrede/Gruß gegenüber dem Kunden."
+  },
+  {
+    id: "bskb2-dtb-k7-2",
+    format: "TELC_DTB_B2",
+    formatLabel: "Deutsch-Test für den Beruf B2 – Schreiben",
+    kurse: ["BSK-B2 Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 7,
+    register: "meinung",
+    handlungsfeld: "Realisierung von Gefühlen/Haltungen/Meinungen",
+    title: "Forumsbeitrag (Thema A): Wie viel Kontrolle braucht gute Qualität?",
+    situation:
+      "Im internen Firmenforum wird diskutiert: „Wie viel Kontrolle braucht gute Qualität wirklich?“ Schreiben Sie Ihre Meinung.",
+    punkte: [
+      "Nennen Sie Ihre Meinung zum Thema.",
+      "Nennen Sie mindestens zwei Argumente.",
+      "Bringen Sie ein Beispiel aus der Praxis.",
+      "Gehen Sie kurz auf ein Gegenargument ein."
+    ],
+    minWords: 150,
+    maxWords: 200,
+    hinweis: "Gliedern Sie Ihren Text in sinnvolle Abschnitte."
+  },
+  {
+    id: "bskb2-dtb-k7-3",
+    format: "TELC_DTB_B2",
+    formatLabel: "Deutsch-Test für den Beruf B2 – Schreiben",
+    kurse: ["BSK-B2 Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 7,
+    register: "meinung",
+    handlungsfeld: "Realisierung von Gefühlen/Haltungen/Meinungen",
+    title: "Forumsbeitrag (Thema B): Kund:innen in die Qualitätssicherung einbeziehen?",
+    situation:
+      "Im internen Firmenforum wird diskutiert: „Sollten Kund:innen direkt in die Qualitätssicherung einbezogen werden?“ Schreiben Sie Ihre Meinung.",
+    punkte: [
+      "Nennen Sie Ihre Meinung zum Thema.",
+      "Nennen Sie mindestens zwei Argumente.",
+      "Bringen Sie ein Beispiel aus der Praxis.",
+      "Gehen Sie kurz auf ein Gegenargument ein."
+    ],
+    minWords: 150,
+    maxWords: 200,
+    hinweis: "Gliedern Sie Ihren Text in sinnvolle Abschnitte."
+  },
+  {
+    id: "bskb2-dtb-k8-1",
+    format: "TELC_DTB_B2",
+    formatLabel: "Deutsch-Test für den Beruf B2 – Schreiben",
+    kurse: ["BSK-B2 Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 8,
+    register: "formell",
+    handlungsfeld: "Arbeitsalltag: Außenkontakte",
+    title: "Beschwerde über eine verspätete Lieferung",
+    situation:
+      "Ein Kunde beschwert sich über eine deutlich verspätete Lieferung. Ihre Teamleitung bittet Sie, dem Kunden zu antworten.",
+    punkte: [
+      "Entschuldigen Sie sich für die Verspätung.",
+      "Erklären Sie einen Grund (z. B. einen Lieferengpass).",
+      "Nennen Sie einen neuen, verbindlichen Liefertermin.",
+      "Bieten Sie eine Wiedergutmachung an (z. B. einen Rabatt)."
+    ],
+    minWords: 180,
+    maxWords: 220,
+    hinweis: "Formelles Register, angemessene Anrede/Gruß gegenüber dem Kunden."
+  },
+  {
+    id: "bskb2-dtb-k8-2",
+    format: "TELC_DTB_B2",
+    formatLabel: "Deutsch-Test für den Beruf B2 – Schreiben",
+    kurse: ["BSK-B2 Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 8,
+    register: "meinung",
+    handlungsfeld: "Realisierung von Gefühlen/Haltungen/Meinungen",
+    title: "Forumsbeitrag (Thema A): Eigene Kundenkontakte pro Abteilung?",
+    situation:
+      "Im internen Firmenforum wird diskutiert: „Sollte jede Abteilung eigene Kundenkontakte pflegen dürfen?“ Schreiben Sie Ihre Meinung.",
+    punkte: [
+      "Nennen Sie Ihre Meinung zum Thema.",
+      "Nennen Sie mindestens zwei Argumente.",
+      "Bringen Sie ein Beispiel aus der Praxis.",
+      "Gehen Sie kurz auf ein Gegenargument ein."
+    ],
+    minWords: 150,
+    maxWords: 200,
+    hinweis: "Gliedern Sie Ihren Text in sinnvolle Abschnitte."
+  },
+  {
+    id: "bskb2-dtb-k8-3",
+    format: "TELC_DTB_B2",
+    formatLabel: "Deutsch-Test für den Beruf B2 – Schreiben",
+    kurse: ["BSK-B2 Rottweil (KL T. Jurtzik)"],
+    aktiv: false,
+    kapitel: 8,
+    register: "meinung",
+    handlungsfeld: "Realisierung von Gefühlen/Haltungen/Meinungen",
+    title: "Forumsbeitrag (Thema B): Feste Bearbeitungsfristen für Aufträge?",
+    situation:
+      "Im internen Firmenforum wird diskutiert: „Feste Bearbeitungsfristen für Aufträge – realistisch oder zu starr?“ Schreiben Sie Ihre Meinung.",
+    punkte: [
+      "Nennen Sie Ihre Meinung zum Thema.",
+      "Nennen Sie mindestens zwei Argumente.",
+      "Bringen Sie ein Beispiel aus der Praxis.",
+      "Gehen Sie kurz auf ein Gegenargument ein."
+    ],
+    minWords: 150,
+    maxWords: 200,
+    hinweis: "Gliedern Sie Ihren Text in sinnvolle Abschnitte."
   }
 ];
 

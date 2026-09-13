@@ -40,6 +40,14 @@
     taskId: urlParams.get("taskId") || ""
   };
 
+  // Vorschau-Modus: über den URL-Parameter "?vorschau=1" (z. B.
+  // schreibtraining.jurtzik-lernapps.de/?vorschau=1) siehst du ALLE
+  // Aufgaben, auch die noch nicht freigeschalteten (aktiv:false) - zum
+  // eigenen Prüfen des kompletten Stands, ohne sie für TN sichtbar zu
+  // machen (die kennen den Parameter nicht und sehen ohne ihn weiterhin
+  // nur das Freigeschaltete).
+  const previewMode = urlParams.get("vorschau") === "1";
+
   const state = {
     name: "",
     kurs: "",
@@ -115,7 +123,8 @@
   }
 
   function initFormatOptions() {
-    const formats = [...new Set(TASKS.map((t) => t.format))];
+    const sichtbareTasks = TASKS.filter((t) => istFreigeschaltet(t) && passtZuKurs(t));
+    const formats = [...new Set(sichtbareTasks.map((t) => t.format))];
     el.selectFormat.innerHTML = "";
     formats.forEach((f) => {
       const opt = document.createElement("option");
@@ -126,14 +135,23 @@
     populateTaskOptions();
   }
 
+  function registerPrefix(task) {
+    if (task.register === "formell") return "Formell – ";
+    if (task.register === "informell") return "Informell – ";
+    if (task.register === "meinung") return "Meinung – ";
+    return "";
+  }
+
   function populateTaskOptions() {
     const format = el.selectFormat.value;
-    const filtered = TASKS.filter((t) => t.format === format);
+    const filtered = TASKS.filter(
+      (t) => t.format === format && istFreigeschaltet(t) && passtZuKurs(t)
+    );
     el.selectTask.innerHTML = "";
     filtered.forEach((t) => {
       const opt = document.createElement("option");
       opt.value = t.id;
-      opt.textContent = t.title;
+      opt.textContent = registerPrefix(t) + t.title + (t.handlungsfeld ? " (" + t.handlungsfeld + ")" : "") + vorschauSuffix(t);
       el.selectTask.appendChild(opt);
     });
     renderTaskDetails();
@@ -157,6 +175,24 @@
     const div = document.createElement("div");
     div.textContent = str;
     return div.innerHTML;
+  }
+
+  // ---------- Kapitelweise Freischaltung (analog Sprechtraining) ----------
+  function istFreigeschaltet(task) {
+    // aktiv fehlt (älterer Eintrag ohne das Feld) -> als freigeschaltet behandeln.
+    if (previewMode) return true;
+    return task.aktiv !== false;
+  }
+
+  function passtZuKurs(task) {
+    return !Array.isArray(task.kurse) || task.kurse.includes(state.kurs);
+  }
+
+  // Im Vorschau-Modus zusätzlich kennzeichnen, welche Aufgaben für TN
+  // aktuell noch NICHT freigeschaltet sind (aktiv:false).
+  function vorschauSuffix(task) {
+    if (!previewMode || task.aktiv !== false) return "";
+    return " 🔒 Vorschau (noch nicht freigeschaltet)";
   }
 
   // ---------- Draft Autosave ----------
@@ -419,8 +455,14 @@
   }
 
   // ---------- Start ----------
+  function initVorschauBanner() {
+    const banner = document.getElementById("vorschau-banner");
+    if (banner && previewMode) banner.classList.remove("hidden");
+  }
+
   initIntro();
   updateFooterText();
+  initVorschauBanner();
 
   // Kommt man mit einem Namen per Deep-Link an (z. B. aus der B1-Lern-App,
   // wo der Name schon eingegeben wurde), muss nicht extra auf "Los geht's"
