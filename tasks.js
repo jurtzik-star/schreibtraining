@@ -101,6 +101,7 @@ const TASKS = [
     id: "b1-dtz-001",
     format: "DTZ_B1",
     formatLabel: "DTZ B1 – Schreiben",
+    kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
     title: "E-Mail an den Vermieter: Heizungsausfall",
     situation:
       "Seit zwei Tagen funktioniert die Heizung in Ihrer Wohnung nicht mehr. Sie schreiben eine E-Mail an Ihren Vermieter / Ihre Vermieterin.",
@@ -118,6 +119,7 @@ const TASKS = [
     id: "b1-dtz-002",
     format: "DTZ_B1",
     formatLabel: "DTZ B1 – Schreiben",
+    kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
     title: "Brief an eine Freundin/einen Freund: Umzug",
     situation:
       "Sie sind vor Kurzem in eine neue Stadt gezogen. Schreiben Sie einen Brief an eine gute Freundin / einen guten Freund.",
@@ -135,6 +137,7 @@ const TASKS = [
     id: "b1-dtz-003",
     format: "DTZ_B1",
     formatLabel: "DTZ B1 – Schreiben",
+    kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
     title: "E-Mail an die Schule Ihres Kindes: Entschuldigung",
     situation:
       "Ihr Kind konnte drei Tage nicht zur Schule gehen, weil es krank war. Schreiben Sie eine E-Mail an die Klassenlehrerin / den Klassenlehrer.",
@@ -152,6 +155,7 @@ const TASKS = [
     id: "b1-dtz-004",
     format: "DTZ_B1",
     formatLabel: "DTZ B1 – Schreiben",
+    kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
     title: "E-Mail an den Arbeitgeber: Urlaubsantrag",
     situation:
       "Sie möchten im nächsten Monat eine Woche Urlaub nehmen. Schreiben Sie eine E-Mail an Ihre Chefin / Ihren Chef.",
@@ -169,6 +173,7 @@ const TASKS = [
     id: "b1-dtz-005",
     format: "DTZ_B1",
     formatLabel: "DTZ B1 – Schreiben",
+    kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
     title: "Drei Dinge, die ich erledigen sollte",
     situation:
       "Sie haben in letzter Zeit einiges liegen lassen: Dinge, die Sie eigentlich tun sollten, müssten oder könnten - die Sie aber (noch) nicht tun wollen oder können. Wählen Sie EINE der beiden Möglichkeiten: Schreiben Sie einen Ich-Text darüber ODER schreiben Sie eine informelle Nachricht an eine gute Freundin / einen guten Freund.",
@@ -186,6 +191,7 @@ const TASKS = [
     id: "b1-dtz-006",
     format: "DTZ_B1",
     formatLabel: "DTZ B1 – Schreiben",
+    kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
     title: "Rat einholen: Auslandssemester",
     situation:
       "Sie überlegen, ein Austauschsemester im Ausland zu machen, sind sich aber noch unsicher. Schreiben Sie eine informelle Nachricht an eine gute Freundin / einen guten Freund, die/der bereits im Ausland studiert hat.",
@@ -203,6 +209,7 @@ const TASKS = [
     id: "b1-dtz-007",
     format: "DTZ_B1",
     formatLabel: "DTZ B1 – Schreiben",
+    kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
     title: "Eine schwierige Situation in der WG",
     situation:
       "Sie wohnen in einer Wohngemeinschaft (WG). Eine Mitbewohnerin / ein Mitbewohner feiert regelmäßig laute Partys bis spät in die Nacht, wodurch Sie schlecht schlafen können. Schreiben Sie eine freundliche, aber klare Nachricht an diese Person.",
@@ -220,6 +227,7 @@ const TASKS = [
     id: "bskb1p-dtz-001",
     format: "DTZ_B1",
     formatLabel: "DTZ B1 – Schreiben",
+    kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
     title: "E-Mail an die Beratungsstelle: Anerkennung meines Abschlusses",
     situation:
       "Sie haben im Ausland eine Berufsausbildung abgeschlossen und möchten wissen, ob und wie dieser Abschluss in Deutschland anerkannt werden kann. Schreiben Sie eine E-Mail an die zuständige Beratungsstelle.",
