@@ -9,6 +9,30 @@
    ============================================================ */
 
 const RUBRICS = {
+  A2_MITTEILUNG: {
+    label: "A2-Prüfung – Schreiben Teil 2: Eine kurze Mitteilung",
+    niveauziel: "A2",
+    kriterien: [
+      {
+        key: "aufgabenerfüllung",
+        label: "Aufgabenerfüllung",
+        beschreibung:
+          "Wurden alle drei Punkte der Aufgabe angesprochen, jeweils mit mindestens einem verständlichen Satz?"
+      },
+      {
+        key: "kommunikative_gestaltung",
+        label: "Kommunikative Gestaltung",
+        beschreibung:
+          "Gibt es eine passende Anrede und einen Gruß (z. B. Liebe … / Viele Grüße) und ist die Nachricht für die Leserin / den Leser gut verständlich?"
+      },
+      {
+        key: "formale_richtigkeit",
+        label: "Sprache (Wortschatz und Grammatik)",
+        beschreibung:
+          "Einfache Sätze auf A2-Niveau (z. B. Perfekt, Satzverbindungen mit und, aber, denn). Fehler sind auf A2 normal – wichtig ist, dass die Aussage verständlich bleibt."
+      }
+    ]
+  },
   DTZ_B1: {
     label: "Deutsch-Test für Zuwanderer (DTZ) B1 – Schreiben",
     niveauziel: "B1",
@@ -96,6 +120,48 @@ const RUBRICS = {
 };
 
 const TASKS = [
+
+  // ---------------- A2 – Kurze Mitteilung (A2 Oberndorf), kapitelweise ----------------
+  // Format wie im A2-Probetest (Schreiben Teil 2): kurze Nachricht/E-Mail
+  // mit drei Punkten, ca. 30–40 Wörter. Freischaltung über "aktiv".
+  {
+    id: "a2-k1-1",
+    aktiv: true,
+    format: "A2_MITTEILUNG",
+    formatLabel: "A2 – Schreiben: Kurze Mitteilung",
+    kurse: ["A2 Oberndorf"],
+    register: "informell",
+    title: "Nachricht an eine Freundin: Mein erster Kurstag",
+    situation:
+      "Sie hatten heute Ihren ersten Tag im neuen Deutschkurs. Schreiben Sie eine kurze Nachricht an Ihre Freundin Ana.",
+    punkte: [
+      "Wie haben Sie sich am Anfang gefühlt?",
+      "Was haben Sie im Kurs gemacht?",
+      "Wie finden Sie die Lehrerin / den Lehrer?"
+    ],
+    minWords: 30,
+    maxWords: 60,
+    hinweis: "Mit Anrede (Liebe Ana, / Hallo Ana,) und Gruß (Viele Grüße). Schreiben Sie im Perfekt: Ich habe … / Ich bin …"
+  },
+  {
+    id: "a2-k1-2",
+    aktiv: true,
+    format: "A2_MITTEILUNG",
+    formatLabel: "A2 – Schreiben: Kurze Mitteilung",
+    kurse: ["A2 Oberndorf"],
+    register: "formell",
+    title: "E-Mail an die Kursleiterin: Ich kann nicht kommen",
+    situation:
+      "Sie können morgen nicht zum Deutschkurs kommen. Schreiben Sie eine kurze E-Mail an Ihre Kursleiterin, Frau Brandt.",
+    punkte: [
+      "Entschuldigen Sie sich.",
+      "Schreiben Sie, warum Sie nicht kommen können.",
+      "Fragen Sie nach den Hausaufgaben."
+    ],
+    minWords: 30,
+    maxWords: 60,
+    hinweis: "Höflich mit Sie: Liebe Frau Brandt, … / Viele Grüße"
+  },
   // ---------------- DTZ B1 ----------------
   {
     id: "b1-dtz-001",

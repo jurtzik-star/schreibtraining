@@ -34,7 +34,8 @@ const CONFIG = {
   GOOGLE_FORM_ACTION_URL_BY_KURS: {
     "B1 Oberndorf (KL T. Jurtzik)": "https://docs.google.com/forms/d/e/1FAIpQLSeZq5Y98yN4_Fox8PQi-pAeggpUSZPovs6fPE6XoWYfFOCKDg/formResponse",
     "BSK-B1+ Rottweil (KL T. Jurtzik)": "https://docs.google.com/forms/d/e/1FAIpQLScAVM9XdRx_u812s5Sdhrge9hZpiiqYBJnEqEnCBQPahij5AA/formResponse",
-    "BSK-B2 Rottweil (KL T. Jurtzik)": "https://docs.google.com/forms/d/e/1FAIpQLScmt8HojgOodDXYP6e05cnDk8FgDk_XdgpAGhbd8i_YguRknQ/formResponse"
+    "BSK-B2 Rottweil (KL T. Jurtzik)": "https://docs.google.com/forms/d/e/1FAIpQLScmt8HojgOodDXYP6e05cnDk8FgDk_XdgpAGhbd8i_YguRknQ/formResponse",
+    "A2 Oberndorf": "https://docs.google.com/forms/d/e/1FAIpQLSfAAAV--5gZMktxP8yGjbqotGL44c0WeTtQ-azNaYHA6yKDEw/formResponse"
   },
 
   // 4) Die entry.XXXXXXXXX-IDs der einzelnen Formularfelder. Gelten für das
@@ -53,5 +54,5 @@ const CONFIG = {
 
   // 5) Auswahlliste der Kurse/Gruppen, die im Dropdown der App erscheinen.
   //    Einfach anpassen/erweitern.
-  KURSE: ["B1 Oberndorf (KL T. Jurtzik)", "BSK-B1+ Rottweil (KL T. Jurtzik)", "BSK-B2 Rottweil (KL T. Jurtzik)"]
+  KURSE: ["B1 Oberndorf (KL T. Jurtzik)", "BSK-B1+ Rottweil (KL T. Jurtzik)", "BSK-B2 Rottweil (KL T. Jurtzik)", "A2 Oberndorf"]
 };
