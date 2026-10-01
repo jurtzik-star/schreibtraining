@@ -99,6 +99,7 @@ const TASKS = [
   // ---------------- DTZ B1 ----------------
   {
     id: "b1-dtz-001",
+    aktiv: false, // allgemeiner B1-Satz – aufgehoben fürs 2. Semester (01.10.2026)
     format: "DTZ_B1",
     formatLabel: "DTZ B1 – Schreiben",
     kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
@@ -117,6 +118,7 @@ const TASKS = [
   },
   {
     id: "b1-dtz-002",
+    aktiv: false, // allgemeiner B1-Satz – aufgehoben fürs 2. Semester (01.10.2026)
     format: "DTZ_B1",
     formatLabel: "DTZ B1 – Schreiben",
     kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
@@ -135,6 +137,7 @@ const TASKS = [
   },
   {
     id: "b1-dtz-003",
+    aktiv: false, // allgemeiner B1-Satz – aufgehoben fürs 2. Semester (01.10.2026)
     format: "DTZ_B1",
     formatLabel: "DTZ B1 – Schreiben",
     kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
@@ -153,6 +156,7 @@ const TASKS = [
   },
   {
     id: "b1-dtz-004",
+    aktiv: false, // allgemeiner B1-Satz – aufgehoben fürs 2. Semester (01.10.2026)
     format: "DTZ_B1",
     formatLabel: "DTZ B1 – Schreiben",
     kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
@@ -171,6 +175,7 @@ const TASKS = [
   },
   {
     id: "b1-dtz-005",
+    aktiv: false, // allgemeiner B1-Satz – aufgehoben fürs 2. Semester (01.10.2026)
     format: "DTZ_B1",
     formatLabel: "DTZ B1 – Schreiben",
     kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
@@ -189,6 +194,7 @@ const TASKS = [
   },
   {
     id: "b1-dtz-006",
+    aktiv: false, // allgemeiner B1-Satz – aufgehoben fürs 2. Semester (01.10.2026)
     format: "DTZ_B1",
     formatLabel: "DTZ B1 – Schreiben",
     kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
@@ -207,6 +213,7 @@ const TASKS = [
   },
   {
     id: "b1-dtz-007",
+    aktiv: false, // allgemeiner B1-Satz – aufgehoben fürs 2. Semester (01.10.2026)
     format: "DTZ_B1",
     formatLabel: "DTZ B1 – Schreiben",
     kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
@@ -225,6 +232,7 @@ const TASKS = [
   },
   {
     id: "bskb1p-dtz-001",
+    aktiv: false, // allgemeine Aufgabe (Kurs B1) – aufgehoben fürs 2. Semester (01.10.2026)
     format: "DTZ_B1",
     formatLabel: "DTZ B1 – Schreiben",
     kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
@@ -256,7 +264,7 @@ const TASKS = [
     format: "DTZ_B1",
     formatLabel: "DTZ B1 – Schreiben",
     kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
-    aktiv: false,
+    aktiv: true,
     kapitel: 1,
     register: "formell",
     handlungsfeld: "Aus- und Weiterbildung",
@@ -278,7 +286,7 @@ const TASKS = [
     format: "DTZ_B1",
     formatLabel: "DTZ B1 – Schreiben",
     kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
-    aktiv: false,
+    aktiv: true,
     kapitel: 1,
     register: "informell",
     handlungsfeld: "Gestaltung sozialer Kontakte · übergreifend",
