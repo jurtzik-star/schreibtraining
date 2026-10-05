@@ -4,7 +4,7 @@
 
    NEUE AUFGABE HINZUFÜGEN:
    Einfach ein weiteres Objekt in TASKS einfügen (id muss eindeutig
-   sein, format muss "DTZ_B1", "TELC_B2_BERUF" oder "TELC_DTB_B2" sein
+   sein, format muss "DTZ_B1", "TELC_B1", "TELC_B2_BERUF" oder "TELC_DTB_B2" sein
    – oder ein neues Format zuerst unten bei RUBRICS ergänzen).
    ============================================================ */
 
@@ -54,6 +54,30 @@ const RUBRICS = {
         label: "Formale Richtigkeit",
         beschreibung:
           "Wortschatz, Grammatik, Rechtschreibung und Satzbau auf B1-Niveau; einfache und etwas komplexere Sätze korrekt verbunden."
+      }
+    ]
+  },
+  TELC_B1: {
+    label: "telc Deutsch B1 – Schriftlicher Ausdruck",
+    niveauziel: "B1",
+    kriterien: [
+      {
+        key: "aufgabenbewältigung",
+        label: "Aufgabenbewältigung",
+        beschreibung:
+          "Werden alle vier Leitpunkte inhaltlich passend bearbeitet? (telc: A = alle vier, B = drei, C = zwei, D = nur einer oder keiner.) Ein Leitpunkt zählt auch, wenn er nur in einem kurzen Satz oder zusammen mit einem anderen Punkt behandelt wird. Passt der Text zum Thema, aber nicht zur Situation (z. B. falscher Adressat), ist dieses Kriterium nicht erfüllt."
+      },
+      {
+        key: "kommunikative_gestaltung",
+        label: "Kommunikative Gestaltung",
+        beschreibung:
+          "Persönliche oder halbformelle E-Mail mit passendem Betreff, Anrede, Einleitung, Schluss und Grußformel; durchgehend passendes Register (du/Sie). Sind die Leitpunkte sinnvoll verbunden (Konnektoren wie deshalb, außerdem, trotzdem, weil, obwohl) oder stehen sie unverbunden nebeneinander? Beginnen die Sätze abwechslungsreich oder überwiegend mit „Ich“/„Wir“? Ist der Wortschatz für B1 ausreichend breit?"
+      },
+      {
+        key: "formale_richtigkeit",
+        label: "Formale Richtigkeit",
+        beschreibung:
+          "Grammatik, Satzbau, Rechtschreibung und Zeichensetzung auf B1-Niveau. Verständlichkeit hat Vorrang: Endungs- und Genusfehler wiegen weniger als Fehler, die das Verständnis stören (z. B. Verbstellung, Kongruenz). Nenne die wichtigsten wiederkehrenden Fehler konkret."
       }
     ]
   },
@@ -317,6 +341,10 @@ const TASKS = [
   },
 
   // ---------------- DTZ B1 – kapitelweise (Schreibfahrplan B1, Kap. 1–6) ----------------
+  // Seit 05.10.2026 im Format telc Deutsch B1 (der Abendkurs schließt mit telc B1 ab,
+  // nicht mit dem DTZ). Die IDs bleiben „b1-dtz-…“, damit die Verknüpfung in der B1-App
+  // unverändert funktioniert. In telc B1 gibt es nur EINE Schreibaufgabe (E-Mail mit
+  // vier Leitpunkten, 30 Min.) – geübt werden trotzdem beide Aufgaben pro Kapitel.
   // Freischaltung erfolgt Kapitel für Kapitel: aktiv auf true setzen, sobald
   // das Kapitel im Unterricht behandelt wurde. Mit ?vorschau=1 lassen sich
   // alle Aufgaben schon vorab ansehen (siehe app.js). Pro Kapitel eine
@@ -327,8 +355,8 @@ const TASKS = [
   // Handlungsfeld-Tags nach dem BAMF-Rahmencurriculum für Integrationskurse.
   {
     id: "b1-dtz-k1-1",
-    format: "DTZ_B1",
-    formatLabel: "DTZ B1 – Schreiben",
+    format: "TELC_B1",
+    formatLabel: "telc Deutsch B1 – Schriftlicher Ausdruck",
     kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
     aktiv: true,
     kapitel: 1,
@@ -349,8 +377,8 @@ const TASKS = [
   },
   {
     id: "b1-dtz-k1-2",
-    format: "DTZ_B1",
-    formatLabel: "DTZ B1 – Schreiben",
+    format: "TELC_B1",
+    formatLabel: "telc Deutsch B1 – Schriftlicher Ausdruck",
     kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
     aktiv: true,
     kapitel: 1,
@@ -371,8 +399,8 @@ const TASKS = [
   },
   {
     id: "b1-dtz-k2-1",
-    format: "DTZ_B1",
-    formatLabel: "DTZ B1 – Schreiben",
+    format: "TELC_B1",
+    formatLabel: "telc Deutsch B1 – Schriftlicher Ausdruck",
     kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
     aktiv: true,
     kapitel: 2,
@@ -393,8 +421,8 @@ const TASKS = [
   },
   {
     id: "b1-dtz-k2-2",
-    format: "DTZ_B1",
-    formatLabel: "DTZ B1 – Schreiben",
+    format: "TELC_B1",
+    formatLabel: "telc Deutsch B1 – Schriftlicher Ausdruck",
     kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
     aktiv: true,
     kapitel: 2,
@@ -415,8 +443,8 @@ const TASKS = [
   },
   {
     id: "b1-dtz-k3-1",
-    format: "DTZ_B1",
-    formatLabel: "DTZ B1 – Schreiben",
+    format: "TELC_B1",
+    formatLabel: "telc Deutsch B1 – Schriftlicher Ausdruck",
     kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
     aktiv: false,
     kapitel: 3,
@@ -437,8 +465,8 @@ const TASKS = [
   },
   {
     id: "b1-dtz-k3-2",
-    format: "DTZ_B1",
-    formatLabel: "DTZ B1 – Schreiben",
+    format: "TELC_B1",
+    formatLabel: "telc Deutsch B1 – Schriftlicher Ausdruck",
     kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
     aktiv: false,
     kapitel: 3,
@@ -459,8 +487,8 @@ const TASKS = [
   },
   {
     id: "b1-dtz-k4-1",
-    format: "DTZ_B1",
-    formatLabel: "DTZ B1 – Schreiben",
+    format: "TELC_B1",
+    formatLabel: "telc Deutsch B1 – Schriftlicher Ausdruck",
     kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
     aktiv: false,
     kapitel: 4,
@@ -481,8 +509,8 @@ const TASKS = [
   },
   {
     id: "b1-dtz-k4-2",
-    format: "DTZ_B1",
-    formatLabel: "DTZ B1 – Schreiben",
+    format: "TELC_B1",
+    formatLabel: "telc Deutsch B1 – Schriftlicher Ausdruck",
     kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
     aktiv: false,
     kapitel: 4,
@@ -503,8 +531,8 @@ const TASKS = [
   },
   {
     id: "b1-dtz-k5-1",
-    format: "DTZ_B1",
-    formatLabel: "DTZ B1 – Schreiben",
+    format: "TELC_B1",
+    formatLabel: "telc Deutsch B1 – Schriftlicher Ausdruck",
     kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
     aktiv: false,
     kapitel: 5,
@@ -525,8 +553,8 @@ const TASKS = [
   },
   {
     id: "b1-dtz-k5-2",
-    format: "DTZ_B1",
-    formatLabel: "DTZ B1 – Schreiben",
+    format: "TELC_B1",
+    formatLabel: "telc Deutsch B1 – Schriftlicher Ausdruck",
     kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
     aktiv: false,
     kapitel: 5,
@@ -547,8 +575,8 @@ const TASKS = [
   },
   {
     id: "b1-dtz-k6-1",
-    format: "DTZ_B1",
-    formatLabel: "DTZ B1 – Schreiben",
+    format: "TELC_B1",
+    formatLabel: "telc Deutsch B1 – Schriftlicher Ausdruck",
     kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
     aktiv: false,
     kapitel: 6,
@@ -569,8 +597,8 @@ const TASKS = [
   },
   {
     id: "b1-dtz-k6-2",
-    format: "DTZ_B1",
-    formatLabel: "DTZ B1 – Schreiben",
+    format: "TELC_B1",
+    formatLabel: "telc Deutsch B1 – Schriftlicher Ausdruck",
     kurse: ["B1 Oberndorf (KL T. Jurtzik)"],
     aktiv: false,
     kapitel: 6,
